@@ -25,11 +25,7 @@ const initDB = async () => {
             type VARCHAR(10) NOT NULL,
             registration_number VARCHAR(100) UNIQUE NOT NULL,
             daily_rent_price INT NOT NULL,
-            description TEXT,
-            completed BOOLEAN DEFAULT false,
-            due_date DATE,
-            created_at TIMESTAMP DEFAULT NOW(),
-            updated_at TIMESTAMP DEFAULT NOW()
+            availability_status VARCHAR(20) NOT NULL
             )
             `);
 };
