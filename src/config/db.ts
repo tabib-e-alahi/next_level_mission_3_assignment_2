@@ -29,7 +29,10 @@ const initDB = async () => {
             `);
 
   await pool.query(`
-    
+    CREATE TABLE IF NOT EXISTS Bookings(
+    id SERIAL PRIMARY KEY,
+    customer_id INT REFERENCES users(id) ON DELETE CASCADE,
+    )
         `);
 };
 
