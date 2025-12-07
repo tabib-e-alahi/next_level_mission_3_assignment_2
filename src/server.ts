@@ -1,8 +1,8 @@
-import express from "express";
+import express, { Request, Response } from "express";
 
 const app = express();
 const port = 5000;
 
-app.get("/", (req, res) =>{
-    res.send
-})
+app.get("/", (req: Request, res: Response) => {
+  res.send("Server is running, Hello From Tabib E Alahi..");
+});
