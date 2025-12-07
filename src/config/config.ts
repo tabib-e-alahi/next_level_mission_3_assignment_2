@@ -7,3 +7,5 @@ const config = {
   connection_string: process.env.CONNECTION_STRING,
   port: process.env.PORT,
 };
+
+export default config;
