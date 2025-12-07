@@ -21,7 +21,8 @@ const initDB = async () => {
             CREATE TABLE IF NOT EXISTS todos(
             id SERIAL PRIMARY KEY,
             user_id INT REFERENCES users(id) ON DELETE CASCADE,
-            title VARCHAR(200) NOT NULL,
+            vehicle_name VARCHAR(200) NOT NULL,
+            type VARCHAR()
             description TEXT,
             completed BOOLEAN DEFAULT false,
             due_date DATE,
