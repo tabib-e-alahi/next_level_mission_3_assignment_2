@@ -26,14 +26,15 @@ const initDB = async () => {
         daily_rent_price INT NOT NULL,
         availability_status VARCHAR(20) NOT NULL
         )
-            `);
+        `);
 
   await pool.query(`
-    CREATE TABLE IF NOT EXISTS Bookings(
-    id SERIAL PRIMARY KEY,
-    customer_id INT REFERENCES Users(id) ON DELETE CASCADE,
-    vehicle_id INT REFERENCES Vehicles(id) ON DELETE CASCADE,
-    )
+        CREATE TABLE IF NOT EXISTS Bookings(
+        id SERIAL PRIMARY KEY,
+        customer_id INT REFERENCES Users(id) ON DELETE CASCADE,
+        vehicle_id INT REFERENCES Vehicles(id) ON DELETE CASCADE,
+        rent_start_date 
+        )
         `);
 };
 
