@@ -14,8 +14,6 @@ const initDB = async () => {
         password TEXT NOT NULL,
         role VARCHAR(50) NOT NULL,
         phoneNo VARCHAR(15) NOT NULL,
-        age INT,
-        address TEXT,
         create_at TIMESTAMP DEFAULT NOW(),
         updated_at TIMESTAMP DEFAULT NOW()
         )
