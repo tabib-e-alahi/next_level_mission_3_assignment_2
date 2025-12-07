@@ -22,7 +22,8 @@ const initDB = async () => {
             id SERIAL PRIMARY KEY,
             user_id INT REFERENCES users(id) ON DELETE CASCADE,
             vehicle_name VARCHAR(200) NOT NULL,
-            type VARCHAR()
+            type VARCHAR(10) NOT NULL,
+            registration_number VARCHAR(100) NOT NULL,
             description TEXT,
             completed BOOLEAN DEFAULT false,
             due_date DATE,
