@@ -33,7 +33,8 @@ const initDB = async () => {
         id SERIAL PRIMARY KEY,
         customer_id INT REFERENCES Users(id) ON DELETE CASCADE,
         vehicle_id INT REFERENCES Vehicles(id) ON DELETE CASCADE,
-        rent_start_date 
+        rent_start_date TIMESTAMP DEFAULT NOW(),
+        rent_end_date TIMESTAMP DEFAULT NOW()
         )
         `);
 };
