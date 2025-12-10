@@ -5,7 +5,12 @@ const registerUser = async (req: Request, res: Response) => {
   try {
     const result = await userServices.registerUser(req.body);
 
-    if(result.success)
+    if(!result.success){
+        res.status(400).json({
+            success: false,
+            message: re
+        })
+    }
 
     res.status(201).json({
       success: true,
