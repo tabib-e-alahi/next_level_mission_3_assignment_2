@@ -10,8 +10,9 @@ const registerUser = async (payload: Record<string, unknown>) => {
       message: "Password must be of minimumn 6 characters!",
     };
   }
-
   const hashedPassword = await bcrypt.hash(password as string, 10);
+
+  const email_lowerCased: string = 
 
   const result = await pool.query(
     `
