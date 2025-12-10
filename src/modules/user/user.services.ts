@@ -20,6 +20,7 @@ const registerUser = async (payload: Record<string, unknown>) => {
   const hashedPassword = await bcrypt.hash(password as string, 10);
 
   const email_lowerCased: string = (email as string).toLowerCase();
+  const role_lowerCased: string = role.toLowerCase()
 
   const result = await pool.query(
     `
