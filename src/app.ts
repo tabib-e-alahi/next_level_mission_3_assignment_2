@@ -11,7 +11,7 @@ initDB();
 
 //! user crud routes------------------------->
 
-app.use()
+app.use("/api/v1/auth", user)
 
 app.post("/api/v1/auth/signup", async (req: Request, res: Response) => {
     const {name, email, password, phone, role} = req.body;
