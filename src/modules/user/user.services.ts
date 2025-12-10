@@ -4,7 +4,9 @@ import bcrypt from "bcryptjs";
 const registerUser = async (payload: Record<string, unknown>) => {
   const { name, email, password, phone, role } = payload;
 
-  if(password.lenght)
+  if((password as string).length < 6){
+    return 
+  }
 
   const hashedPassword = await bcrypt.hash(password as string, 10);
 
