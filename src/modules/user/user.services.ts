@@ -12,8 +12,9 @@ const registerUser = async (payload: Record<string, unknown>) => {
             `,
     [name, email, hashedPassword, phone, role]
   );
+  const {id, name, email, } = result.rows[0]
   const data = {
-    id: result.rows[0]
+    id: 
   }
   return result;
 };
