@@ -13,6 +13,7 @@ const registerUser = async (payload: Record<string, unknown>) => {
     [name, email, hashedPassword, phone, role]
   );
 
+
   return result;
 };
 
