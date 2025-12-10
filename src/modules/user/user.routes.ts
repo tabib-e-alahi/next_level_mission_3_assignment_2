@@ -4,6 +4,9 @@ const router = Router();
 
 router.post("/signup", async (req: Request, res: Response) => {
   const { name, email, password, phone, role } = req.body;
+  try{
+    
+  }
 });
 
 export const userRoutes = router;
