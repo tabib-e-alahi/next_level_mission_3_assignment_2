@@ -1,14 +1,15 @@
 import { pool } from "../../config/db";
 
-const registerUser = async(payload: Record<string, unknown>) =>{
-    const result = await pool.query(
-          `
+const registerUser = async (payload: Record<string, unknown>) => {
+  const { name, email, password, phone, role } = payload;
+  const result = await pool.query(
+    `
             INSERT INTO Users(name, email, password, phone, role) VALUES($1, $2, $3, $4, $5) RETURNING *
             `,
-          [name, email, password, phone, role]
-        );
-}
+    [name, email, password, phone, role]
+  );
 
-export const userServices = {
-    
-}
+  return result;
+};
+
+export const userServices = {registerUser};
