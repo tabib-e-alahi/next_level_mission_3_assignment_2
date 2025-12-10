@@ -6,7 +6,8 @@ const registerUser = async (payload: Record<string, unknown>) => {
 
   if((password as string).length < 6){
     return {
-        suc
+        success: false,
+        message: ""
     }
   }
 
