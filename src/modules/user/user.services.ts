@@ -20,13 +20,13 @@ const registerUser = async (payload: Record<string, unknown>) => {
   const hashedPassword = await bcrypt.hash(password as string, 10);
 
   const email_lowerCased: string = (email as string).toLowerCase();
-  const role_lowerCased: string = role.toLowerCase()
+  const role_lowerCased: string = role.toLowerCase();
 
   const result = await pool.query(
     `
             INSERT INTO Users(name, email, password, phone, role) VALUES($1, $2, $3, $4, $5) RETURNING *
             `,
-    [name, email_lowerCased, hashedPassword, phone, role]
+    [name, email_lowerCased, hashedPassword, phone, role_lowerCased]
   );
 
   const data = {
