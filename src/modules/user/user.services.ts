@@ -12,14 +12,16 @@ const registerUser = async (payload: Record<string, unknown>) => {
             `,
     [name, email, hashedPassword, phone, role]
   );
+
   const data = {
     id: result.rows[0].id,
     name: result.rows[0].name,
     email: result.rows[0].email,
-    phone: phone,
-    role: role
-  }
-  return result;
+    phone: result.rows[0].phone,
+    role: result.rows[0].role,
+  };
+  
+  return data;
 };
 
 export const userServices = { registerUser };
