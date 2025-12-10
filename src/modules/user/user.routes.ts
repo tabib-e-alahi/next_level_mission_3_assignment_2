@@ -8,8 +8,8 @@ router.post("/signup", async (req: Request, res: Response) => {
   } catch (err: any) {
     res.status(500).json({
       success: false,
-      message: "Error description",
-      errors: "Error description",
+      message: "User registration failed!",
+      errors: err.message,
     });
   }
 });
