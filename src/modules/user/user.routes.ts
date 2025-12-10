@@ -6,4 +6,4 @@ router.post("/signup", async (req: Request, res: Response) => {
   const { name, email, password, phone, role } = req.body;
 });
 
-export const userRoutes = {};
+export const userRoutes = router;
