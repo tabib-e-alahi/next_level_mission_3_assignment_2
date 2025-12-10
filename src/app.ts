@@ -13,8 +13,6 @@ initDB();
 
 app.post("/api/v1/auth/signup", async (req: Request, res: Response) => {
     const {name, email, password, phone, role} = req.body;
-    {
-}
 });
 
 export default app;
