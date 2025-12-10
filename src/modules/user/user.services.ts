@@ -4,11 +4,11 @@ import bcrypt from "bcryptjs";
 const registerUser = async (payload: Record<string, unknown>) => {
   const { name, email, password, phone, role } = payload;
 
-  if((password as string).length < 6){
+  if ((password as string).length < 6) {
     return {
-        success: false,
-        message: ""
-    }
+      success: false,
+      message: "Password must be of minimumn 6 characters!",
+    };
   }
 
   const hashedPassword = await bcrypt.hash(password as string, 10);
@@ -28,7 +28,10 @@ const registerUser = async (payload: Record<string, unknown>) => {
     role: result.rows[0].role,
   };
 
-  return data;
+  return {
+    success: true,
+    data: data,
+  };
 };
 
 export const userServices = { registerUser };

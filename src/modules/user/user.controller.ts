@@ -5,6 +5,8 @@ const registerUser = async (req: Request, res: Response) => {
   try {
     const result = await userServices.registerUser(req.body);
 
+    if(result.success)
+
     res.status(201).json({
       success: true,
       message: "User registered successfully",
