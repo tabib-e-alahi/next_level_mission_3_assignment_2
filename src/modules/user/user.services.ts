@@ -10,6 +10,8 @@ const registerUser = async (payload: Record<string, unknown>) => {
       message: "Password must be of minimumn 6 characters!",
     };
   }
+
+  if((role as string) === "admin" )
   const hashedPassword = await bcrypt.hash(password as string, 10);
 
   const email_lowerCased: string = (email as string).toLowerCase();
@@ -18,7 +20,7 @@ const registerUser = async (payload: Record<string, unknown>) => {
     `
             INSERT INTO Users(name, email, password, phone, role) VALUES($1, $2, $3, $4, $5) RETURNING *
             `,
-    [name, email, hashedPassword, phone, role]
+    [name, email_lowerCased, hashedPassword, phone, role]
   );
 
   const data = {
