@@ -7,7 +7,7 @@ router.post("/signup", async (req: Request, res: Response) => {
   const { name, email, password, phone, role } = req.body;
   try {
     const result = await pool.query(`
-        INSERT INTO Users(name, email, password, phone, role) VALUES($$$$$)
+        INSERT INTO Users(name, email, password, phone, role) VALUES($1, $2, $3, $4, $5) RETURNING *
         `)
   } catch (err: any) {
     res.status(500).json({
