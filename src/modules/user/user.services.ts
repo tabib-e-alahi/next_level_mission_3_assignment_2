@@ -11,10 +11,10 @@ const registerUser = async (payload: Record<string, unknown>) => {
     };
   }
 
-  if(!(role === "admin" || role === "customer")){
+  if (!(role === "admin" || role === "customer")) {
     return {
       success: false,
-      message: "Password must be of minimumn 6 characters!",
+      message: "User role must be either 'admin' or 'customer'",
     };
   }
   const hashedPassword = await bcrypt.hash(password as string, 10);
