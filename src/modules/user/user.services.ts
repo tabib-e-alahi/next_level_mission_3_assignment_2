@@ -12,11 +12,10 @@ const registerUser = async (payload: Record<string, unknown>) => {
             `,
     [name, email, hashedPassword, phone, role]
   );
-  const {id, name, email, phone, role} = result.rows[0]
   const data = {
-    id: id,
-    name: name,
-    email: email,
+    id: result.rows[0].id,
+    name: result.rows[0].name,
+    email: result.rows[0].email,
     phone: phone,
     role: role
   }
