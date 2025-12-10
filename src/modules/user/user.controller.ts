@@ -4,7 +4,7 @@ import { userServices } from "./user.services";
 
 const registerUser = async (req: Request, res: Response) => {
   try {
-    const result = await userServices.
+    const result = await userServices.registerUser(req.body);
 
     res.status(201).json({
       success: true,
@@ -20,4 +20,4 @@ const registerUser = async (req: Request, res: Response) => {
   }
 };
 
-export const userController = {registerUser};
+export const userController = { registerUser };
