@@ -7,21 +7,19 @@ const registerUser = async (req: Request, res: Response) => {
     const result = await authServices.registerUser(req.body);
 
     if (!result.success) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         message: result.message,
       });
-
-      return;
     }
 
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: "User registered successfully",
       data: result.data,
     });
   } catch (err: any) {
-    res.status(500).json({
+     res.status(500).json({
       success: false,
       message: "User registration failed!",
       errors: err.message,
