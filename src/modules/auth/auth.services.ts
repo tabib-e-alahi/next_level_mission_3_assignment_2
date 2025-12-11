@@ -62,6 +62,10 @@ const signInUser = async (email: string, password: string) => {
   if (!isMatched) {
     throw new Error("Incorrect credentials! Please entered the correct one.");
   }
+
+  const jwtPayload = {
+    id: 
+  }
 };
 
 export const authServices = { registerUser, signInUser };
