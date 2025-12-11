@@ -63,18 +63,16 @@ const signInUser = async (email: string, password: string) => {
     };
   }
 
-  
   const user = result.rows[0];
   const isMatched = await bcrypt.compare(password, user.password);
 
   //if there is a user then password checking
-  if(!isMatched){
+  if (!isMatched) {
     return {
       success: false,
-      message: "Incorrent credentials. Please entered the correct ones."
-    }
+      message: "Incorrect credentials! Please entered the correct ones.",
+    };
   }
-
 };
 
 export const authServices = { registerUser };
