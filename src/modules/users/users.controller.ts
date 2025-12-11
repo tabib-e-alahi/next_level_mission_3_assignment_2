@@ -5,11 +5,14 @@ const getAllUsers = async (req: Request, res: Response) => {
   try {
     const result = await userServices.getAllUsers();
 
-    if(result.rows.length === 0)
+    if(result.rows.length === 0){
+        throw new Error("Users data not found.")
+    }
   } catch (err: any) {
     return res.status(500).json({
       success: false,
       message: err.message,
+      data: []
     });
   }
 };
