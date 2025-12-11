@@ -18,8 +18,8 @@ const auth = () => {
       [decoded.email]
     );
 
-    if(user.rows.length === 0){
-        thwo
+    if (user.rows.length === 0) {
+      throw new Error("User not found.");
     }
     next();
   };
