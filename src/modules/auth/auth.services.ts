@@ -48,7 +48,7 @@ const signInUser = async (email: string, password: string) => {
   //checkin if there is any user with this email or not
   if (result.rows.length === 0) {
     throw new Error(
-      "There is no user account with this email. Please first create a account."
+      "No account found with this email. Please register you account first."
     );
   }
 
@@ -59,7 +59,7 @@ const signInUser = async (email: string, password: string) => {
   if (!isMatched) {
     return {
       success: false,
-      message: "Incorrect credentials! Please entered the correct ones.",
+      message: ,
     };
   }
 };
