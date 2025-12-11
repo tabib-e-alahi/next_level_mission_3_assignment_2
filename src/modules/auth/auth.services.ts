@@ -43,4 +43,4 @@ const registerUser = async (payload: Record<string, unknown>) => {
   };
 };
 
-export const userServices = { registerUser };
+export const authServices = { registerUser };

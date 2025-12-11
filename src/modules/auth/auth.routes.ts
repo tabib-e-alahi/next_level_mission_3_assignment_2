@@ -1,9 +1,8 @@
 import { Request, Response, Router } from "express";
-import { pool } from "../../config/db";
-import { userController } from "./auth.controller";
+
 
 const router = Router();
 
-router.post("/signup", userController.registerUser);
+router.post("/signup", );
 
 export const userRoutes = router;
