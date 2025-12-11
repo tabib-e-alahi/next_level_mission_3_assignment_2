@@ -64,8 +64,8 @@ const signInUser = async (email: string, password: string) => {
   }
 
   //if there is a user then password checking
-  const user = result.rows[0]
-  
+  const user = result.rows[0];
+  const isMatched = await bcrypt.compare(password, user.password);
 };
 
 export const authServices = { registerUser };
