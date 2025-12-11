@@ -1,6 +1,7 @@
 import { pool } from "../../config/db";
 import bcrypt from "bcryptjs";
 
+//! 1. User registration
 const registerUser = async (payload: Record<string, unknown>) => {
   const { name, email, password, phone, role } = payload;
 
@@ -42,5 +43,8 @@ const registerUser = async (payload: Record<string, unknown>) => {
     data: data,
   };
 };
+
+//! 2. User login
+const signin
 
 export const authServices = { registerUser };
