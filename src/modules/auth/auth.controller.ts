@@ -19,6 +19,9 @@ const registerUser = async (req: Request, res: Response) => {
   }
 };
 
-const signInUser = async(req: Request, res: Response)
+const signInUser = async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+  const result = await authServices.signInUser(email, password);
+};
 
 export const authController = { registerUser };
