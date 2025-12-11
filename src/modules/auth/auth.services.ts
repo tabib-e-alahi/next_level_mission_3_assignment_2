@@ -10,11 +10,9 @@ const registerUser = async (payload: Record<string, unknown>) => {
   }
 
   if (!(role === "admin" || role === "customer")) {
-    return {
-      success: false,
-      message: "User role must be either 'admin' or 'customer'",
-    };
+    throw new Error("User role must be either 'admin' or 'customer'");
   }
+  
   const hashedPassword = await bcrypt.hash(password as string, 10);
 
   const email_lowerCased: string = (email as string).toLowerCase();
