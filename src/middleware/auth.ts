@@ -5,24 +5,28 @@ import { pool } from "../config/db";
 
 const auth = (...roles: string[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
-    const token = req.headers.authorization;
+    try {
+      const token = req.headers.authorization;
 
-    if (!token) {
-      throw new Error("You are not authorized!");
-    }
-    const decoded = jwt.verify(token, config.jwt_secret!) as JwtPayload;
-    const user = await pool.query(
-      `
+      if (!token) {
+        throw new Error("You are not authorized!");
+      }
+      const decoded = jwt.verify(token, config.jwt_secret!) as JwtPayload;
+      const user = await pool.query(
+        `
         SELECT * FROM Users WHERE email=$1
         `,
-      [decoded.email]
-    );
+        [decoded.email]
+      );
 
-    if (user.rows.length === 0) {
-      throw new Error("User not found.");
+      if (user.rows.length === 0) {
+        throw new Error("User not found.");
+      }
+
+      req.user = decoded;
+      next();
+    } catch (err: any) {
+        
     }
-
-    req.user = decoded;
-    next();
   };
 };
