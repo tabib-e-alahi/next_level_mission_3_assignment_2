@@ -1,6 +1,7 @@
 import { pool } from "../../config/db";
 import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken'
+import config from "../../config/config";
 
 //! 1. User registration
 const registerUser = async (payload: Record<string, unknown>) => {
@@ -71,7 +72,10 @@ const signInUser = async (email: string, password: string) => {
     role: user.role
   }
 
-  
+  const secret = config.jwt_secret;
+
+  const token = jwt.sign(jwtPayload, secret)
+
 };
 
 export const authServices = { registerUser, signInUser };
