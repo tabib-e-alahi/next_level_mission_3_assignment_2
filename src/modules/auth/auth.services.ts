@@ -1,6 +1,6 @@
 import { pool } from "../../config/db";
 import bcrypt from "bcryptjs";
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken";
 import config from "../../config/config";
 
 //! 1. User registration
@@ -69,13 +69,16 @@ const signInUser = async (email: string, password: string) => {
     name: user.name,
     email: user.email,
     phone: user.phone,
-    role: user.role
-  }
+    role: user.role,
+  };
 
-  const secret = (config.jwt_secret as string);
+  const secret = config.jwt_secret as string;
 
-  const token = jwt.sign(jwtPayload, secret, {expiresIn: "3D"})
+  const token = jwt.sign(jwtPayload, secret, { expiresIn: "3D" });
 
+  delete user.password;
+
+  return { token, user };
 };
 
 export const authServices = { registerUser, signInUser };
