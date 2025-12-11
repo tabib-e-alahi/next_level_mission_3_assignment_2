@@ -72,9 +72,9 @@ const signInUser = async (email: string, password: string) => {
     role: user.role
   }
 
-  const secret = config.jwt_secret;
+  const secret = (config.jwt_secret as string);
 
-  const token = jwt.sign(jwtPayload, secret!, )
+  const token = jwt.sign(jwtPayload, secret, {expiresIn: "3D"})
 
 };
 
