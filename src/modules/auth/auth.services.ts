@@ -53,7 +53,13 @@ const signInUser = async (email: string, password: string) => {
     [email]
   );
 
-  
+  //checkin if there is any user with this email or not
+  if(result.rows.length === 0){
+    return {
+      success: false,
+      message: ""
+    }
+  }
 };
 
 export const authServices = { registerUser };
