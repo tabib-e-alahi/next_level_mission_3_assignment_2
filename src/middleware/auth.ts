@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import config from "../config/config";
 
 const auth = () => {
@@ -9,7 +9,7 @@ const auth = () => {
     if(!token){
         throw new Error("You are not authorized!");
     }
-
-    const decoded = jwt.verify(token, config.jwt_secret)
+    const secret = config.jwt_secret
+    const decoded = jwt.verify(token, secret) as JwtPayload
   };
 };
