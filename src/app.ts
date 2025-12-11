@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import initDB from "./config/db";
-import { userRoutes } from "./modules/auth/auth.routes";
+import { authRoutes } from "./modules/auth/auth.routes";
 
 const app = express();
 
@@ -10,9 +10,7 @@ app.use(express.json());
 //? db
 initDB();
 
-//! user crud routes------------------------->
-
-app.use("/api/v1/auth", userRoutes);
-
+//! authentication routes------------------------->
+app.use("/api/v1/auth", authRoutes);
 
 export default app;
