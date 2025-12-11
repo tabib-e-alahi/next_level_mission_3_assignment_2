@@ -4,6 +4,7 @@ import config from "../config/config";
 import { pool } from "../config/db";
 
 const auth = (...roles: string[]) => {
+  console.log(roles);
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const token = req.headers.authorization;
