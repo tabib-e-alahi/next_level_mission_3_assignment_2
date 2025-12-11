@@ -26,13 +26,13 @@ const signInUser = async (req: Request, res: Response) => {
 
     return res.status(201).json({
       success: true,
-      message: "User sign in suce",
+      message: "Login successful",
       data: result,
     });
   } catch (err: any) {
     return res.status(500).json({
       success: false,
-      message: "User registration failed!",
+      message: "Login failed!",
       errors: err.message,
     });
   }
