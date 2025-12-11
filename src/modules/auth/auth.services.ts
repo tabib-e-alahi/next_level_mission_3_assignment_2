@@ -57,8 +57,8 @@ const signInUser = async (email: string, password: string) => {
 
   //if there is a user then password checking
   if (!isMatched) {
-    throw new Error("Incorrect credentials! Please entered the correct one.")
+    throw new Error("Incorrect credentials! Please entered the correct one.");
   }
 };
 
-export const authServices = { registerUser };
+export const authServices = { registerUser, signInUser };

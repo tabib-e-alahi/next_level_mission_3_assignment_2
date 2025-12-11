@@ -19,4 +19,6 @@ const registerUser = async (req: Request, res: Response) => {
   }
 };
 
+const signInUser = async(req: Request, res: Response)
+
 export const authController = { registerUser };
