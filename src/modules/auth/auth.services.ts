@@ -74,7 +74,7 @@ const signInUser = async (email: string, password: string) => {
 
   const secret = config.jwt_secret;
 
-  const token = jwt.sign(jwtPayload, secret)
+  const token = jwt.sign(jwtPayload, secret!, )
 
 };
 
