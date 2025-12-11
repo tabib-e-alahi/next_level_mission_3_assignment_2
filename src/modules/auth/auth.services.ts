@@ -57,10 +57,7 @@ const signInUser = async (email: string, password: string) => {
 
   //if there is a user then password checking
   if (!isMatched) {
-    return {
-      success: false,
-      message: ,
-    };
+    throw new Error("Incorrect credentials! Please entered the correct one.")
   }
 };
 
