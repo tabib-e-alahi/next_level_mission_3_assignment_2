@@ -45,6 +45,8 @@ const registerUser = async (payload: Record<string, unknown>) => {
 };
 
 //! 2. User login
-const signin
+const signInUser = async(email: string, password: string) =>{
+  
+}
 
 export const authServices = { registerUser };
