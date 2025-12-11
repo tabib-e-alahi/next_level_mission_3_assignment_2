@@ -33,7 +33,7 @@ const registerUser = async (payload: Record<string, unknown>) => {
   //   role: result.rows[0].role,
   // };
 
-  delete result
+  delete result.rows[0].password;
 
   return result;
 };
