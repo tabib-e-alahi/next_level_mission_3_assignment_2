@@ -45,10 +45,15 @@ const registerUser = async (payload: Record<string, unknown>) => {
 };
 
 //! 2. User login
-const signInUser = async(email: string, password: string) =>{
-  const result = await pool.query(`
-    SELECT id, name, email, phone, role FROM Users WHERE email=$1, 
-    `)
-}
+const signInUser = async (email: string, password: string) => {
+  const result = await pool.query(
+    `
+    SELECT * FROM Users WHERE email=$1 
+    `,
+    [email]
+  );
+
+  
+};
 
 export const authServices = { registerUser };
