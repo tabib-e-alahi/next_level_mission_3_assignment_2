@@ -9,7 +9,7 @@ const auth = (...roles: string[]) => {
       const token = req.headers.authorization;
 
       if (!token) {
-        throw new Error("You are not authorized!");
+        throw new Error("Unauthorized Access!");
       }
       const decoded = jwt.verify(token, config.jwt_secret!) as JwtPayload;
       const user = await pool.query(
@@ -24,6 +24,9 @@ const auth = (...roles: string[]) => {
       }
 
       req.user = decoded;
+
+      if(roles.length && roles)
+
       next();
     } catch (err: any) {
       res.status(500).json({
