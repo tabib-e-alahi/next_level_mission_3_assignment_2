@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import config from "../config/config";
+import { pool } from "../config/db";
 
 const auth = () => {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -10,7 +11,9 @@ const auth = () => {
       throw new Error("You are not authorized!");
     }
     const decoded = jwt.verify(token, config.jwt_secret!) as JwtPayload;
-
+    const user = await pool.query(`
+        SELECT * FROM Users WHERE 
+        `)
     next();
   };
 };
