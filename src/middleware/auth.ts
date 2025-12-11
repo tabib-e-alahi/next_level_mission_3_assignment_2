@@ -27,7 +27,7 @@ const auth = (...roles: string[]) => {
       req.user = decoded;
 
       if (roles.length && !roles.includes(decoded.role)) {
-        throw new Error();
+        throw new Error("Unauthorized Access!", status);
       }
 
       next();
