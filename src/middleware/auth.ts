@@ -21,6 +21,8 @@ const auth = () => {
     if (user.rows.length === 0) {
       throw new Error("User not found.");
     }
+
+    req.user = decoded;
     next();
   };
 };
