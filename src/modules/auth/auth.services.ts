@@ -70,6 +70,8 @@ const signInUser = async (email: string, password: string) => {
     phone: user.phone,
     role: user.role
   }
+
+  
 };
 
 export const authServices = { registerUser, signInUser };
