@@ -26,7 +26,10 @@ const auth = (...roles: string[]) => {
       req.user = decoded;
       next();
     } catch (err: any) {
-        
+      res.status(500).json({
+        success: false,
+        message: err.message,
+      });
     }
   };
 };
