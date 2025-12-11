@@ -54,13 +54,18 @@ const signInUser = async (email: string, password: string) => {
   );
 
   //checkin if there is any user with this email or not
-  if(result.rows.length === 0){
+  if (result.rows.length === 0) {
     return {
       success: false,
-      message: "There is not user account with this email. Please first create a account.",
-      data: null
-    }
+      message:
+        "There is not user account with this email. Please first create a account.",
+      data: null,
+    };
   }
+
+  //if there is a user then password checking
+  const user = result.rows[0]
+  
 };
 
 export const authServices = { registerUser };
