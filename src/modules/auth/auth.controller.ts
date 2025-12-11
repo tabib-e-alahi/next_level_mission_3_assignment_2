@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
-import { userServices } from "./auth.services";
+import { authServices } from "./auth.services";
+
 
 const registerUser = async (req: Request, res: Response) => {
   try {
-    const result = await userServices.registerUser(req.body);
+    const result = await authServices.registerUser(req.body);
 
     if (!result.success) {
       res.status(400).json({
@@ -28,4 +29,4 @@ const registerUser = async (req: Request, res: Response) => {
   }
 };
 
-export const userController = { registerUser };
+export const authController = { registerUser };
