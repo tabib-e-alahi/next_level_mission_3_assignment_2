@@ -57,7 +57,8 @@ const signInUser = async (email: string, password: string) => {
   if(result.rows.length === 0){
     return {
       success: false,
-      message: ""
+      message: "There is not user account with this email. Please first create a account.",
+      data: null
     }
   }
 };
