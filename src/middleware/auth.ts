@@ -32,7 +32,7 @@ const auth = (...roles: string[]) => {
 
       next();
     } catch (err: any) {
-      res.status(500).json({
+      res.status(401).json({
         success: false,
         message: err.message,
       });
