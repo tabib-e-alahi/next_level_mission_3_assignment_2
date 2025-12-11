@@ -1,6 +1,6 @@
 import express, { Request, Response } from "express";
 import initDB from "./config/db";
-import { userRoutes } from "./modules/user/user.routes";
+import { userRoutes } from "./modules/auth/auth.routes";
 
 const app = express();
 

@@ -1,6 +1,6 @@
 import { Request, Response, Router } from "express";
 import { pool } from "../../config/db";
-import { userController } from "./user.controller";
+import { userController } from "./auth.controller";
 
 const router = Router();
 
