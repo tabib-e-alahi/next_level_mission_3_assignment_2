@@ -25,15 +25,17 @@ const registerUser = async (payload: Record<string, unknown>) => {
     [name, email_lowerCased, hashedPassword, phone, role_lowerCased]
   );
 
-  const data = {
-    id: result.rows[0].id,
-    name: result.rows[0].name,
-    email: result.rows[0].email,
-    phone: result.rows[0].phone,
-    role: result.rows[0].role,
-  };
+  // const data = {
+  //   id: result.rows[0].id,
+  //   name: result.rows[0].name,
+  //   email: result.rows[0].email,
+  //   phone: result.rows[0].phone,
+  //   role: result.rows[0].role,
+  // };
 
-  return data;
+  delete result
+
+  return result;
 };
 
 //! 2. User login
