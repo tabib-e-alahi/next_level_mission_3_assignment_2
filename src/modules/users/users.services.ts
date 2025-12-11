@@ -3,7 +3,7 @@ import { pool } from "../../config/db"
 const getAllUsers = async() =>{
 
     const result = await pool.query(`
-        SELECT * FROM Users
+        SELECT id, name, email, phone, role FROM Users
         `)
 
 }
