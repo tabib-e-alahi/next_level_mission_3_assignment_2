@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import jwt from 'jsonwebtoken'
 import { authServices } from "./auth.services";
 
 const registerUser = async (req: Request, res: Response) => {
@@ -39,4 +38,4 @@ const signInUser = async (req: Request, res: Response) => {
   }
 };
 
-export const authController = { registerUser };
+export const authController = { registerUser, signInUser };

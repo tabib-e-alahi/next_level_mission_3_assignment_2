@@ -1,5 +1,6 @@
 import { pool } from "../../config/db";
 import bcrypt from "bcryptjs";
+import jwt from 'jsonwebtoken'
 
 //! 1. User registration
 const registerUser = async (payload: Record<string, unknown>) => {
