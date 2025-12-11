@@ -1,13 +1,13 @@
-import { pool } from "../../config/db"
+import { pool } from "../../config/db";
 
-const getAllUsers = async() =>{
-
-    const result = await pool.query(`
+const getAllUsers = async () => {
+  const result = await pool.query(`
         SELECT id, name, email, phone, role FROM Users
-        `)
+    `);
 
-}
+  return result;
+};
 
 export const userServices = {
-    getAllUsers
-}
+  getAllUsers,
+};
