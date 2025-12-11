@@ -11,9 +11,16 @@ const auth = () => {
       throw new Error("You are not authorized!");
     }
     const decoded = jwt.verify(token, config.jwt_secret!) as JwtPayload;
-    const user = await pool.query(`
-        SELECT * FROM Users WHERE 
-        `)
+    const user = await pool.query(
+      `
+        SELECT * FROM Users WHERE email=$1
+        `,
+      [decoded.email]
+    );
+
+    if(user.rows.length === 0){
+        thwo
+    }
     next();
   };
 };
