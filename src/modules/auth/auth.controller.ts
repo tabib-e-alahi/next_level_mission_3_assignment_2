@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { authServices } from "./auth.services";
 
-
 const registerUser = async (req: Request, res: Response) => {
   try {
     const result = await authServices.registerUser(req.body);
@@ -19,7 +18,7 @@ const registerUser = async (req: Request, res: Response) => {
       data: result.data,
     });
   } catch (err: any) {
-     res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: "User registration failed!",
       errors: err.message,
