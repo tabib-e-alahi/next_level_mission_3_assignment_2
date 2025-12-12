@@ -35,7 +35,7 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
 
     const result = await pool.query(
         `
-        INSERT INTO Vehicles
+        INSERT INTO Vehicles(vehicle_name, type, registration_number, )
         `
     )
     
