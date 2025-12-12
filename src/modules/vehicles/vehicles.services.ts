@@ -83,22 +83,18 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     );
   }
 
-  if (daily_rent_price !== undefined && daily_rent_price! <= 0) {
-    return res
-      .status(400)
-      .json({ message: `Daily rent price must be positive.` });
+  if (daily_rent_price !== undefined && (daily_rent_price as number) <= 0) {
+    throw new Error("Daily rent price must be positive.");
   }
 
   if (
     availability_status &&
-    !["available", "booked"].includes(availability_status.toLowerCase())
+    !["available", "booked"].includes((availability_status).toLowerCase())
   ) {
-    return res
-      .status(400)
-      .json({
-        message:
-          "Invalid availability status. Allowed statuses are 'available' and 'booked'",
-      });
+    return res.status(400).json({
+      message:
+        "Invalid availability status. Allowed statuses are 'available' and 'booked'",
+    });
   }
 };
 
