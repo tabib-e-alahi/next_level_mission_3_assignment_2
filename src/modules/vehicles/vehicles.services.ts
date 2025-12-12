@@ -9,19 +9,19 @@ const createVehicle = async (payload: Record<string, unknown>) => {
     availability_status,
   } = payload;
 
-  //! checking car types
+  //* checking car types
   if (!["car", "bike", "van", "SUV"].includes(type as string)) {
     throw new Error(
       "Invalid vehicle types! Types: 'car', 'bike', 'van', or 'SUV'"
     );
   }
 
-  //! checking daily rent price is positive or not
+  //* checking daily rent price is positive or not
   if (!((daily_rent_price as number) > 0)) {
     throw new Error(`Daily rent price must be positive: ${daily_rent_price}.`);
   }
 
-  //! checking availability status
+  //* checking availability status
   const availability_status_lower: string = (
     availability_status as string
   ).toLowerCase();
@@ -68,7 +68,7 @@ const getVehicleById = async (payload: Record<string, unknown>) => {
 };
 
 const updateVehicleByID = async(payload:Record<string, unknown>) =>{
-
+  console.log(payload);
 }
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
