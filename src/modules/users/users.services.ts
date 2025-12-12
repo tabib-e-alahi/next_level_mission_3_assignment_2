@@ -10,13 +10,16 @@ const getAllUsers = async () => {
 
 const updateUser = async(payload: Record<string, unknown>) =>{
   const {
-    userId,
     name,
     email,
     password,
     phone,
-    role, userRole,
+    role,
+    userId, 
+    userRole,
   } = payload;
+
+  if(user)
 
   if (type && !["car", "bike", "van", "SUV"].includes(type as string)) {
     throw new Error(
