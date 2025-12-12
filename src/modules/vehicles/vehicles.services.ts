@@ -1,3 +1,5 @@
+import { pool } from "../../config/db";
+
 const getAllVehicles = async (payload: Record<string, unknown>) => {
   try {
     const {
@@ -31,7 +33,11 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
       );
     }
 
-    const result = await pool
+    const result = await pool.query(
+        `
+        INSERT INTO Vehicles
+        `
+    )
     
   } catch (error) {}
 };
