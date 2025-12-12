@@ -30,6 +30,9 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
         "Invalid inputs! Availability Status is either 'available' or 'booked'"
       );
     }
+
+    const result = await pool
+    
   } catch (error) {}
 };
 
