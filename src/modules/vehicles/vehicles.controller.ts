@@ -74,8 +74,12 @@ const updateVehicleByID = async (req: Request, res: Response) => {
       ...req.body,
       vehicleId: req.params.vehicleId,
     });
+
+    if (result.rows.length === 0){
+      throw new Error("vehicle")
+    }
   } catch (err: any) {
-    
+
   }
 };
 
