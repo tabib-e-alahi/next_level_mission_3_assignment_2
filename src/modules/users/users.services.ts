@@ -14,9 +14,8 @@ const updateUser = async(payload: Record<string, unknown>) =>{
     name,
     email,
     password,
-    registration_number,
-    daily_rent_price,
-    availability_status,
+    phone,
+    role, userRole,
   } = payload;
 
   if (type && !["car", "bike", "van", "SUV"].includes(type as string)) {
