@@ -44,7 +44,7 @@ const updateUser = async (req: Request, res: Response) => {
 
     return res.status(200).json({
       success: true,
-      message: "Vehicle updated successfully",
+      message: "User updated successfully",
       data: result.rows[0],
     });
   } catch (err: any) {

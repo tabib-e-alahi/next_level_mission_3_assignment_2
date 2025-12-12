@@ -46,6 +46,8 @@ const updateUser = async (payload: Record<string, unknown>) => {
     }
   }
 
+  if (userRole === "admin") delete final_result.rows[0].password;
+
   return final_result;
 };
 
