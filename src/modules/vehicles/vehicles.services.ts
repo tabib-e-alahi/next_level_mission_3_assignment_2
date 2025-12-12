@@ -52,10 +52,6 @@ const getAllVehicles = async () => {
     SELECT * FROM Vehicles
     `);
 
-  if (result.rows.length === 0){
-    return
-  }
-
   return result;
 };
 
