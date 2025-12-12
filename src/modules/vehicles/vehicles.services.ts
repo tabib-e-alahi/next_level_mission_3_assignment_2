@@ -110,11 +110,13 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     throw new Error("There is no valid fields to update.");
   }
 
-  for(const )
+  for(const key in Object.keys){
     const result = await pool.query(
-      "UPDATE vehicles SET availability_status=$1 WHERE id=$2 RETURNING *",
+      `UPDATE vehicles SET ${updateFields[keys]}=$1 WHERE id=$2 RETURNING *`,
       [availability_status, vehicleId]
     );
+  }
+    
 
 
     if (result.rows.length > 0) {
