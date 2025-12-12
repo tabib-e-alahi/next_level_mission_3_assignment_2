@@ -19,15 +19,8 @@ const updateUser = async(payload: Record<string, unknown>) =>{
     userRole,
   } = payload;
 
-  if(user)
 
-  if (type && !["car", "bike", "van", "SUV"].includes(type as string)) {
-    throw new Error(
-      "Invalid vehicle types! Types: 'car', 'bike', 'van', or 'SUV'"
-    );
-  }
-
-  if (daily_rent_price && (daily_rent_price as number) <= 0) {
+  if (password && (daily_rent_price as number) <= 0) {
     throw new Error(`Daily rent price must be positive: ${daily_rent_price}.`);
   }
 
