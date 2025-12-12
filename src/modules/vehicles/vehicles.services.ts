@@ -117,7 +117,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
       `UPDATE vehicles SET ${key}=$1 WHERE id=$2 RETURNING *`,
       [updateFields[key], vehicleId]
     );
-    console.log(`${key}`);
+    console.log(`${key} ${updateFields[key]} : `, result);
     if (result.rows.length > 0) {
       final_result = result; 
     }
