@@ -12,7 +12,8 @@ router.get("/", vehicleController.getAllVehicles);
 //* get single vehicle by id
 router.get("/:vehicleId", vehicleController.getVehicleById);
 
-router.put("/:vehicleId", vehicleController.updateVehicleByID);
+//* update single vehicla data by id
+router.put("/:vehicleId", auth("admin"), vehicleController.updateVehicleByID);
 
 //* delete a vehicle data
 router.delete("/:vehicleId", auth("admin"), vehicleController.deleteVehicle);

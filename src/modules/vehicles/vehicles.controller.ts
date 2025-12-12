@@ -69,7 +69,7 @@ const getVehicleById = async (req: Request, res: Response) => {
   }
 };
 
-//*//* retrieve all vehicle data
+//* update a vehicle data
 const updateVehicleByID = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.updateVehicleByID({
@@ -95,6 +95,7 @@ const updateVehicleByID = async (req: Request, res: Response) => {
   }
 };
 
+//* delete a vehicle data
 const deleteVehicle = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.deleteVehicle(req.params);
