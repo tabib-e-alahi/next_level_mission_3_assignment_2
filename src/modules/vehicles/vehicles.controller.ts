@@ -4,7 +4,9 @@ import { vehicleServices } from "./vehicles.services"
 const createVehicle = async(req: Request, res: Response) =>{
     try {
        const result =  await vehicleServices.createVehicle(req.body);
-       console.log(result);
+       if(result.rows.length === 0){
+        throw new Error("")
+       }
     } catch (error:any) {
         console.log("From controller: ",error.message);
     }
