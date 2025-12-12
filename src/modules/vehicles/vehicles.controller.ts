@@ -70,7 +70,7 @@ const getVehicleById = async (req: Request, res: Response) => {
 
 const updateVehicleByID = async (req: Request, res: Response) => {
   try {
-    const result = await vehicleServices.
+    const result = await vehicleServices.updateVehicleByID(req.body, req.params)
   } catch (err: any) {}
 };
 

@@ -68,7 +68,7 @@ const getVehicleById = async (payload: Record<string, unknown>) => {
 };
 
 const updateVehicleByID = async(payload:Record<string, unknown>) =>{
-  
+
 }
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
@@ -86,5 +86,6 @@ export const vehicleServices = {
   createVehicle,
   getAllVehicles,
   getVehicleById,
+  updateVehicleByID,
   deleteVehicle,
 };
