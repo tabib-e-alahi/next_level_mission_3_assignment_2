@@ -68,6 +68,8 @@ const getVehicleById = async (req: Request, res: Response) => {
   }
 };
 
+const deleteVehicle = async
+
 export const vehicleController = {
   createVehicle,
   getAllVehicles,

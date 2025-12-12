@@ -55,23 +55,30 @@ const getAllVehicles = async () => {
   return result;
 };
 
-const getVehicleById = async(payload: Record<string, unknown>) =>{
-  const {vehicleId} = payload
-  const result = await pool.query(`
+const getVehicleById = async (payload: Record<string, unknown>) => {
+  const { vehicleId } = payload;
+  const result = await pool.query(
+    `
     SELECT * FROM Vehicles WHERE id=$1
-    `, [vehicleId])
+    `,
+    [vehicleId]
+  );
 
-    return result;
-}
+  return result;
+};
 
-const deleteVehicle = async(payload: Record<string, unknown>)  =>{
-  const {vehicleId} = payload;
-  const result = await pool.query(`DELETE FROM Vehicles WHERE id=`)
-}
+const deleteVehicle = async (payload: Record<string, unknown>) => {
+  const { vehicleId } = payload;
+  const result = await pool.query(`DELETE FROM Vehicles WHERE id=$1`, [
+    vehicleId,
+  ]);
+
+  return result;
+};
 
 export const vehicleServices = {
   createVehicle,
   getAllVehicles,
   getVehicleById,
-  deleteVehicle
+  deleteVehicle,
 };
