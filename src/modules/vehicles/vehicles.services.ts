@@ -1,6 +1,6 @@
 import { pool } from "../../config/db";
 
-const createVehicles = async (payload: Record<string, unknown>) => {
+const createVehicle = async (payload: Record<string, unknown>) => {
   const {
     vehicle_name,
     type,
@@ -48,5 +48,5 @@ const createVehicles = async (payload: Record<string, unknown>) => {
 };
 
 export const vehicleServices = {
-  createVehicles,
+  createVehicle,
 };

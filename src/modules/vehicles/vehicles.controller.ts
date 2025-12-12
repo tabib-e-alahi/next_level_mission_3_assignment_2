@@ -1,10 +1,9 @@
 import { Request, Response } from "express"
 import { vehicleServices } from "./vehicles.services"
 
-const getAllVehicles = async(req: Request, res: Response) =>{
-
+const createVehicle = async(req: Request, res: Response) =>{
     try {
-       const result =  await vehicleServices.getAllVehicles(req.body);
+       const result =  await vehicleServices.createVehicle(req.body);
        console.log(result);
     } catch (error:any) {
         console.log("From controller: ",error.message);
@@ -12,5 +11,5 @@ const getAllVehicles = async(req: Request, res: Response) =>{
 }
 
 export const vehicleController = {
-    getAllVehicles
+    createVehicle
 }
