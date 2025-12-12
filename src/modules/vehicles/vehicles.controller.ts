@@ -3,10 +3,10 @@ import { vehicleServices } from "./vehicles.services"
 
 const getAllVehicles = async(req: Request, res: Response) =>{
     try {
-       const result =  await vehicleServices.getAllVehicles;
+       const result =  await vehicleServices.getAllVehicles(req.body);
        console.log(result);
-    } catch (error) {
-        
+    } catch (error:any) {
+        console.log(error.message);
     }
 }
 
