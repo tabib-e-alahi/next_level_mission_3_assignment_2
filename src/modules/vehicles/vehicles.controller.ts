@@ -11,10 +11,10 @@ const createVehicle = async (req: Request, res: Response) => {
     });
   } catch (error: any) {
     return res.status(500).json({
-      success: true,
-      message: "Vehicle created successfully",
-      data: result.rows[0],
-    })
+      success: false,
+      message: "Vehicle creation failed..",
+      error: error.message,
+    });
   }
 };
 
