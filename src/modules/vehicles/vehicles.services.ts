@@ -15,7 +15,7 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
     }
     //checking daily rent price is positive or not
     if(!(daily_rent_price as number > 0)){
-        throw new Error("Daily rent price must be a positive ")
+        throw new Error(`Daily rent price must be positive ${daily_rent_price}`)
     }
   } catch (error) {}
 };
