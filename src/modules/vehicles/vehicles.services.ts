@@ -7,16 +7,20 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
       daily_rent_price,
       availability_status,
     } = payload;
+
     //! checking car types
     if (!["car", "bike", "van", "SUV"].includes(type as string)) {
       throw new Error(
         "Invalid vehicle types! Types: 'car', 'bike', 'van', or 'SUV'"
       );
     }
-    //checking daily rent price is positive or not
-    if(!(daily_rent_price as number > 0)){
-        throw new Error(`Daily rent price must be positive ${daily_rent_price}`)
+    //! checking daily rent price is positive or not
+    if (!((daily_rent_price as number) > 0)) {
+      throw new Error(
+        `Daily rent price must be positive: ${daily_rent_price}.`
+      );
     }
+    
   } catch (error) {}
 };
 
