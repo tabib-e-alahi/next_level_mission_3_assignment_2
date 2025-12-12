@@ -68,7 +68,7 @@ const getVehicleById = async (payload: Record<string, unknown>) => {
 };
 
 const updateVehicleByID = async(payload:Record<string, unknown>) =>{
-  console.log(payload);
+  const { vehicleId, vehicle_name, type, registration_number, daily_rent_price, availability_status }
 }
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
