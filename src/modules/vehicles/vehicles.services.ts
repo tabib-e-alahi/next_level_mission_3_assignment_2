@@ -20,9 +20,11 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
         `Daily rent price must be positive: ${daily_rent_price}.`
       );
     }
-    const availability_status_lower: string = (availability_status as string).to 
+    const availability_status_lower: string = (availability_status as string).toLowerCase() 
     //! checking availability status
-    if(['available','booked'].includes(availability_status))
+    if(!['available','booked'].includes(availability_status_lower)){
+        throw new Error("Inva")
+    }
   } catch (error) {}
 };
 
