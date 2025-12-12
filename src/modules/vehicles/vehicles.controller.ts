@@ -50,6 +50,10 @@ const getAllVehicles = async (req: Request, res: Response) => {
 const getVehicleById = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.getVehicleById(req.params);
+    if(result.rows.length === 0){
+      throw console.error();
+      
+    }
   } catch (err: any) {
     return res.status(500).json({
       success: false,

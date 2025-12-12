@@ -55,8 +55,8 @@ const getAllVehicles = async () => {
   return result;
 };
 
-const getVehicleById = async() =>{
-  
+const getVehicleById = async(payload: Record<string, unknown>) =>{
+
 }
 
 export const vehicleServices = {
