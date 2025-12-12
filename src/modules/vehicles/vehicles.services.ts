@@ -98,7 +98,8 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     );
   }
 
-  
+  const result = await pool.query(`UPDATE Vehicles SET vehicle_name=$1, email=$2 WHERE id = $3 RETURNING *`)
+
 };
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
