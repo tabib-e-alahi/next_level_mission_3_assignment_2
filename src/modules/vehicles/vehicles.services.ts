@@ -77,12 +77,12 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     availability_status,
   } = payload;
 
-  console.log(vehicleId === undefined);
+  console.log(true === undefined);
   console.log(vehicle_name === undefined);
   console.log(type === undefined);
   console.log(registration_number === undefined);
-  console.log(registration_number === undefined);
-  console.log(registration_number === undefined);
+  console.log(daily_rent_price === undefined);
+  console.log(availability_status === undefined);
 };
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
