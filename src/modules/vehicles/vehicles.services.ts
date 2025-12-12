@@ -102,22 +102,21 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
 
   if (vehicle_name) {
     const result = await pool.query(
-      "UPDATE vehicles SET vehicle_name=$1 WHERE id=$2 RETURNING *",
+      "UPDATE Vehicles SET vehicle_name=$1 WHERE id=$2 RETURNING *",
       [vehicle_name, vehicleId]
     );
     if (result.rows.length > 0) {
-      updatedVehicle = result.rows[0]; // Store the updated vehicle data
+      final_result = result.rows[0];
     }
   }
 
-  // Update type if provided
   if (type) {
     const result = await pool.query(
       "UPDATE vehicles SET type=$1 WHERE id=$2 RETURNING *",
       [type, vehicleId]
     );
     if (result.rows.length > 0) {
-      updatedVehicle = result.rows[0]; // Update the vehicle data
+      final_result = result.rows[0]; // Update the vehicle data
     }
   }
 
@@ -128,7 +127,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
       [registration_number, vehicleId]
     );
     if (result.rows.length > 0) {
-      updatedVehicle = result.rows[0]; // Update the vehicle data
+      final_result = result.rows[0]; // Update the vehicle data
     }
   }
 
@@ -139,7 +138,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
       [daily_rent_price, vehicleId]
     );
     if (result.rows.length > 0) {
-      updatedVehicle = result.rows[0]; // Update the vehicle data
+      final_result = result.rows[0]; // Update the vehicle data
     }
   }
 
@@ -150,7 +149,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
       [availability_status, vehicleId]
     );
     if (result.rows.length > 0) {
-      updatedVehicle = result.rows[0]; // Update the vehicle data
+      final_result = result.rows[0]; // Update the vehicle data
     }
   }
 
