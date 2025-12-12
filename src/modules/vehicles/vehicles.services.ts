@@ -46,12 +46,11 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
       ]
     );
 
-    if(result.rows.length === 0){
-        
-    }
+    return result;
 
-
-  } catch (error) {}
+  } catch (err: any) {
+    return res.status
+  }
 };
 
 export const vehicleServices = {
