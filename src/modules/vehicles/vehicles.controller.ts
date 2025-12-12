@@ -47,6 +47,7 @@ const getAllVehicles = async (req: Request, res: Response) => {
   }
 };
 
+//* retrieve single vehicle data
 const getVehicleById = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.getVehicleById(req.params);
@@ -68,6 +69,7 @@ const getVehicleById = async (req: Request, res: Response) => {
   }
 };
 
+//*//* retrieve all vehicle data
 const updateVehicleByID = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.updateVehicleByID({
