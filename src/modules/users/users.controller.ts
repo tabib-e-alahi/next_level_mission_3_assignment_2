@@ -22,16 +22,17 @@ const getAllUsers = async (req: Request, res: Response) => {
   }
 };
 
-const updateUser = async(req: Request, res: Response) =>{
+const updateUser = async (req: Request, res: Response) => {
   try {
-    const {role}
-    const result = await userServices.updateUser({...req.body, userId: req.params.userId})
-  } catch (error) {
-    
-  }
-}
+    const { role, id } = req.user;
+    const result = await userServices.updateUser({
+      ...req.body,
+      userId: req.params.userId,
+    });
+  } catch (error) {}
+};
 
 export const userController = {
   getAllUsers,
-  updateUser
+  updateUser,
 };
