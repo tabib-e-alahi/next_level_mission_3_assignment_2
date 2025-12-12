@@ -47,8 +47,12 @@ const getAllVehicles = async (req: Request, res: Response) => {
   }
 };
 
-const getVehicleById = async() =>{
-
+const getVehicleById = async(req: Request, res: Response) =>{
+  try {
+    
+  } catch (err: any) {
+    return res.status
+  }
 }
 
 export const vehicleController = {
