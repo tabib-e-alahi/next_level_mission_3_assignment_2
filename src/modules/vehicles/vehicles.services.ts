@@ -73,6 +73,8 @@ const deleteVehicle = async (payload: Record<string, unknown>) => {
     vehicleId,
   ]);
 
+  console.log(result);
+
   return result;
 };
 
