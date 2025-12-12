@@ -22,6 +22,14 @@ const getAllUsers = async (req: Request, res: Response) => {
   }
 };
 
+const updateUser = async(req: Request, res: Response) =>{
+  try {
+    const 
+  } catch (error) {
+    
+  }
+}
+
 export const userController = {
   getAllUsers,
 };
