@@ -7,7 +7,7 @@ const getAllVehicles = async(req: Request, res: Response) =>{
        const result =  await vehicleServices.getAllVehicles(req.body);
        console.log(result);
     } catch (error:any) {
-        console.log(""error.message);
+        console.log("From controller: ",error.message);
     }
 }
 
