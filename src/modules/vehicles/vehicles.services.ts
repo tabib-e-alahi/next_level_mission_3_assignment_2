@@ -49,8 +49,11 @@ const createVehicle = async (payload: Record<string, unknown>) => {
 
 const getAllVehicles = async() =>{
   const result = await pool.query(`
-    
+    SELECT * FROM Vehicles
     `)
+
+  if(result.rows.length === 0)
+    throw new Error("Vehicles data could not be retrieved.")  
 }
 
 export const vehicleServices = {
