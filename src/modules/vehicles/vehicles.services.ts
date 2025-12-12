@@ -27,7 +27,7 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
     ).toLowerCase();
     if (!["available", "booked"].includes(availability_status_lower)) {
       throw new Error(
-        "Invalid Availability Status types. It can be either 'available' or 'booked'"
+        "Invalid inputs! Availability Status is either 'available' or 'booked'"
       );
     }
   } catch (error) {}
