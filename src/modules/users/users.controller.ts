@@ -35,6 +35,7 @@ const updateUser = async (req: Request, res: Response) => {
     const result = await userServices.updateUser({
       ...req.body,
       userId: req.params.userId,
+      userRole: userRole
     });
   } catch (err: any) {
     res.status(403).json({
