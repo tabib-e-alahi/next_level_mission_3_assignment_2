@@ -50,13 +50,14 @@ const getAllVehicles = async (req: Request, res: Response) => {
 const getVehicleById = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.getVehicleById(req.params);
-    if(result.rows.length === 0){
-      throw new Error("Vehicle data not found with this id.")
+    if (result.rows.length === 0) {
+      throw new Error("Vehicle data not found with this id.");
     }
 
     return res.status(200).json({
       success: true,
       message: "Vehicle retrieved successfully",
+      data: result.rows[0],
     });
   } catch (err: any) {
     return res.status(500).json({
