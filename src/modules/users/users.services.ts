@@ -24,11 +24,11 @@ const updateUser = async (payload: Record<string, unknown>) => {
 
   if (name) updateFields.name = name;
   if (email) updateFields.email = email;
-  if (userRole ==='cus' password) {
+  if (userRole === "customer" && password) {
     updateFields.password = await bcrypt.hash(password as string, 10);
   }
   if (phone) updateFields.phone = phone;
-  if (role) updateFields.role = role;
+  if (userRole === "admin" && role) updateFields.role = role;
 
   if (Object.keys(updateFields).length === 0) {
     throw new Error("There is no valid fields to update.");
@@ -38,8 +38,8 @@ const updateUser = async (payload: Record<string, unknown>) => {
 
   for (const key of Object.keys(updateFields)) {
     const result = await pool.query(
-      `UPDATE Vehicles SET ${key}=$1 WHERE id=$2 RETURNING *`,
-      [updateFields[key], vehicleId]
+      `UPDATE Users SET ${key}=$1 WHERE id=$2 RETURNING *`,
+      [updateFields[key], userId]
     );
     if (result.rows.length > 0) {
       final_result = result;
