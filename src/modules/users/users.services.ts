@@ -23,7 +23,9 @@ const updateUser = async(payload: Record<string, unknown>) =>{
     throw new Error("Password must be minimum of 6 characters.");
   }
 
-  if(userRole === 'admin' && ['admin'])
+  if(userRole === 'admin' && !['admin', 'customer'].includes(role as string)){
+    throw new Error("user role can be either ''a")
+  }
 
 export const userServices = {
   getAllUsers,
