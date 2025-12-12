@@ -68,6 +68,10 @@ const getVehicleById = async (req: Request, res: Response) => {
   }
 };
 
+const updateVehicleByID = async(req: Request, res: Response) =>{
+  
+}
+
 const deleteVehicle = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.deleteVehicle(req.params);
