@@ -24,9 +24,8 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const updateUser = async(req: Request, res: Response) =>{
   try {
-    const {role, id} = req.user;
+    const {role}
     const result = await userServices.updateUser({...req.body, userId: req.params.userId})
-    console.log(req.user);
   } catch (error) {
     
   }
