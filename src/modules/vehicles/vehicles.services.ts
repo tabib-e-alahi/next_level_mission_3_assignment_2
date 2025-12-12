@@ -50,10 +50,3 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
 export const vehicleServices = {
   getAllVehicles,
 };
-// {
-//   "vehicle_name": "Toyota Camry 2024",
-//   "type": "car",
-//   "registration_number": "ABC-1234",
-//   "daily_rent_price": 50,
-//   "availability_status": "available"
-// }
