@@ -98,10 +98,11 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     );
   }
 
-  let updateFields: any = [];
+  let updateFields: any = {};
 
-  if (vehicle_name)
-    updateFields.pu
+  if (vehicle_name) updateFields.vehicle_name = vehicle_name;
+  if (type) updateFields.type = type;
+  if (vehicle_name) updateFields.vehicle_name = vehicle_name;
 
   if (type) {
     const result = await pool.query(
