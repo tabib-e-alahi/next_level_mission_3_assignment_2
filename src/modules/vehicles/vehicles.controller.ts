@@ -26,4 +26,5 @@ const getAllVehicles = async(req: Request, res: Response) =>{
 
 export const vehicleController = {
   createVehicle,
+  getAllVehicles
 };
