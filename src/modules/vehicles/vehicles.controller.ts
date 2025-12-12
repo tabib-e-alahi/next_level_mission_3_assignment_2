@@ -5,7 +5,7 @@ const createVehicle = async(req: Request, res: Response) =>{
     try {
        const result =  await vehicleServices.createVehicle(req.body);
        if(result.rows.length === 0){
-        throw new Error("")
+        
        }
     } catch (error:any) {
         console.log("From controller: ",error.message);
