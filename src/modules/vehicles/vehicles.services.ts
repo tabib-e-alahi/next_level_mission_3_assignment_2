@@ -20,7 +20,9 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
         `Daily rent price must be positive: ${daily_rent_price}.`
       );
     }
-    
+
+    //! checking availability status
+    if(['available','booked'].includes(ava))
   } catch (error) {}
 };
 
