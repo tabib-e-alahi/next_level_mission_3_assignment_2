@@ -98,17 +98,11 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     );
   }
 
-  const result = await pool.query(
-    `UPDATE Vehicles SET vehicle_name=$1, type=$2, registration_number=$3, daily_rent_price=$4, availability_status=$5 WHERE id = $6 RETURNING *`,
-    [
-      vehicle_name,
-      type,
-      registration_number,
-      daily_rent_price,
-      availability_status,
-      vehicleId,
-    ]
-  );
+  if(vehicle_name){
+    
+  }
+
+  
 
   return result;
 };
