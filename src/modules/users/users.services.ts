@@ -45,6 +45,8 @@ const updateUser = async (payload: Record<string, unknown>) => {
       final_result = result;
     }
   }
+
+  return final_result;
 };
 
 export const userServices = {
