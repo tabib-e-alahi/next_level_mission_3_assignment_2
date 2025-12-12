@@ -139,17 +139,18 @@ const deleteVehicle = async (payload: Record<string, unknown>) => {
     throw new Error("Vehicle data not found!");
   }
 
-  const availability_status = availability_status_result.rows[0].availability_status;
+  const availability_status =
+    availability_status_result.rows[0].availability_status;
 
-  if (availability_status !== "booked") {
-    throw new Error("This vehicle is active now. Active vehicles can not be deleted.");
+  if (availability_status === "booked") {
+    throw new Error(
+      "This vehicle is active now. Active vehicles can not be deleted."
+    );
   }
-  
+
   const result = await pool.query(`DELETE FROM Vehicles WHERE id=$1`, [
     vehicleId,
   ]);
-
-  console.log(result);
 
   return result;
 };
