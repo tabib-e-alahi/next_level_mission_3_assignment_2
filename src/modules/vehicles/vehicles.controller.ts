@@ -87,8 +87,9 @@ const updateVehicleByID = async (req: Request, res: Response) => {
   } catch (err: any) {
     return res.status(500).json({
       success: false,
-      message
-    })
+      message: "Vehicle data could not be updated.",
+      error: err.message,
+    });
   }
 };
 
