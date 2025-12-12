@@ -71,6 +71,9 @@ const getVehicleById = async (req: Request, res: Response) => {
 const deleteVehicle = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.deleteVehicle(req.params);
+    if(result.rows.length === 0)
+      throw new Error("Vehicle Data not found");
+    return res/status
   } catch (error) {}
 };
 
