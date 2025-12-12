@@ -118,7 +118,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
       [updateFields[key], vehicleId]
     );
     if (result.rows.length > 0) {
-      final_result = result.rows[0]; 
+      final_result = result; 
     }
   }
   
