@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { vehicleServices } from "./vehicles.services";
 
+//! create vehicle controller
 const createVehicle = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.createVehicle(req.body);
@@ -9,11 +10,11 @@ const createVehicle = async (req: Request, res: Response) => {
       message: "Vehicle created successfully",
       data: result.rows[0],
     });
-  } catch (error: any) {
+  } catch (err: any) {
     return res.status(500).json({
       success: false,
       message: "Vehicle creation failed..",
-      error: error.message,
+      error: err.message,
     });
   }
 };
