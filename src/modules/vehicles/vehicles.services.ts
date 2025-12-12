@@ -64,6 +64,8 @@ const getVehicleById = async(payload: Record<string, unknown>) =>{
     return result;
 }
 
+const updateVehicle = async(payload: Record)
+
 export const vehicleServices = {
   createVehicle,
   getAllVehicles,
