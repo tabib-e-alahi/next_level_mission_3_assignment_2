@@ -76,8 +76,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     daily_rent_price,
     availability_status,
   } = payload;
-  const updateFields
-  if(vehicle_name) 
+  if() 
 };
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
