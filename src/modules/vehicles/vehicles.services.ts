@@ -55,7 +55,12 @@ const getAllVehicles = async () => {
   return result;
 };
 
+const getVehicleById = async() =>{
+  
+}
+
 export const vehicleServices = {
   createVehicle,
   getAllVehicles,
+  getVehicleById
 };
