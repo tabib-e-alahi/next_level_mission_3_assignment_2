@@ -98,7 +98,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     );
   }
 
-  let final_result: any = null;
+  let updateFields: any = null;
 
   if (vehicle_name) {
     const result = await pool.query(
@@ -122,7 +122,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
 
   if (registration_number) {
     const result = await pool.query(
-      ,
+      `UPDATE vehicles SET ${registration_number}=$1 WHERE id=$2 RETURNING *`,
       [registration_number, vehicleId]
     );
     if (result.rows.length > 0) {
