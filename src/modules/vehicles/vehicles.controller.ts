@@ -19,6 +19,9 @@ const createVehicle = async (req: Request, res: Response) => {
   }
 };
 
+//* retrieve all vehicles data
+const getAllVehicles = async(req: Request, res: Response) =
+
 export const vehicleController = {
   createVehicle,
 };
