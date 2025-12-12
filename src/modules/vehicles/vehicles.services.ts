@@ -102,54 +102,14 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
 
   if (vehicle_name) updateFields.vehicle_name = vehicle_name;
   if (type) updateFields.type = type;
-  if (vehicle_name) updateFields.vehicle_name = vehicle_name;
+  if (registration_number) updateFields.registration_number = registration_number;
+  if (daily_rent_price) updateFields.daily_rent_price = daily_rent_price;
+  if (availability_status) updateFields.availability_status = availability_status;
 
-  if (type) {
-    const result = await pool.query(
-      "UPDATE vehicles SET type=$1 WHERE id=$2 RETURNING *",
-      [type, vehicleId]
-    );
-    if (result.rows.length > 0) {
-      final_result = result.rows[0]; // Update the vehicle data
-    }
-  }
+  
 
-  if (registration_number) {
-    const result = await pool.query(
-      `UPDATE vehicles SET ${registration_number}=$1 WHERE id=$2 RETURNING *`,
-      [registration_number, vehicleId]
-    );
-    if (result.rows.length > 0) {
-      final_result = result.rows[0]; // Update the vehicle data
-    }
-  }
+  
 
-  // Update daily_rent_price if provided
-  if (daily_rent_price) {
-    const result = await pool.query(
-      "UPDATE vehicles SET daily_rent_price=$1 WHERE id=$2 RETURNING *",
-      [daily_rent_price, vehicleId]
-    );
-    if (result.rows.length > 0) {
-      final_result = result.rows[0]; // Update the vehicle data
-    }
-  }
-
-  // Update availability_status if provided
-  if (availability_status) {
-    const result = await pool.query(
-      "UPDATE vehicles SET availability_status=$1 WHERE id=$2 RETURNING *",
-      [availability_status, vehicleId]
-    );
-    if (result.rows.length > 0) {
-      final_result = result.rows[0]; // Update the vehicle data
-    }
-  }
-
-  // If no fields were updated, return null
-  if (!updatedVehicle) {
-    return null;
-  }
 
   return result;
 };
