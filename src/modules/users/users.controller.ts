@@ -27,8 +27,9 @@ const updateUser = async (req: Request, res: Response) => {
   const { userId } = req.params;
   const { role: userRole, id: loggedInUserId } = req.user as JwtPayload;
   try {
-    
-    if (userRole !== "admin" && loggedInUserId !== parseInt(userId as string)) {
+    // if the user is not admin and also trying to update another profile
+    if (userRole !== "admin") {
+      
       throw new Error("You are not authorized to update this user profile.");
     }
     const result = await userServices.updateUser({
