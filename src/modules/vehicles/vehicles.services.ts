@@ -76,13 +76,8 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     daily_rent_price,
     availability_status,
   } = payload;
-
-  console.log(true === undefined);
-  console.log(vehicle_name === undefined);
-  console.log(type === undefined);
-  console.log(registration_number === undefined);
-  console.log(daily_rent_price === undefined);
-  console.log(availability_status === undefined);
+  const updateFields
+  if(vehicle_name) 
 };
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
