@@ -97,6 +97,8 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
       "Invalid inputs! Availability Status is either 'available' or 'booked'"
     );
   }
+
+  
 };
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
