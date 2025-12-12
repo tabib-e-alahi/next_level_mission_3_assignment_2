@@ -10,9 +10,10 @@ const getAllUsers = async () => {
 
 const updateUser = async(payload: Record<string, unknown>) =>{
   const {
-    vehicleId,
-    vehicle_name,
-    type,
+    userId,
+    name,
+    email,
+    password,
     registration_number,
     daily_rent_price,
     availability_status,
