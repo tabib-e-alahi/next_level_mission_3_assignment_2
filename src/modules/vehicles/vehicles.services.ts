@@ -89,12 +89,13 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
 
   if (
     availability_status &&
-    !["available", "booked"].includes((availability_status).toLowerCase())
+    !["available", "booked"].includes(
+      (availability_status as string).toLowerCase()
+    )
   ) {
-    return res.status(400).json({
-      message:
-        "Invalid availability status. Allowed statuses are 'available' and 'booked'",
-    });
+    throw new Error(
+      "Invalid availability status. Allowed statuses are 'available' and 'booked'"
+    );
   }
 };
 
