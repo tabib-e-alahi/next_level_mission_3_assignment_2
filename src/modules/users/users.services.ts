@@ -9,9 +9,12 @@ const getAllUsers = async () => {
 };
 
 const updateUser = async(payload: Record<string, unknown>) =>{
-  
+  const {userId} = payload;
+
+  const {}
 }
 
 export const userServices = {
   getAllUsers,
+  updateUser
 };
