@@ -70,8 +70,13 @@ const getVehicleById = async (req: Request, res: Response) => {
 
 const updateVehicleByID = async (req: Request, res: Response) => {
   try {
-    const result = await vehicleServices.updateVehicleByID({...req.body, req.params})
-  } catch (err: any) {}
+    const result = await vehicleServices.updateVehicleByID({
+      ...req.body,
+      vehicleId: req.params.vehicleId,
+    });
+  } catch (err: any) {
+    
+  }
 };
 
 const deleteVehicle = async (req: Request, res: Response) => {
@@ -94,5 +99,6 @@ export const vehicleController = {
   createVehicle,
   getAllVehicles,
   getVehicleById,
+  updateVehicleByID,
   deleteVehicle,
 };
