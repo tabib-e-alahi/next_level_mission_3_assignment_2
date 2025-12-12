@@ -114,7 +114,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
 
   for(const key in Object.keys){
     const result = await pool.query(
-      `UPDATE vehicles SET ${key}=$1 WHERE id=$2 RETURNING *`,
+      `UPDATE Vehicles SET ${key}=$1 WHERE id=$2 RETURNING *`,
       [updateFields[key], vehicleId]
     );
     console.log(`${key} ${updateFields[key]} : `, result);
