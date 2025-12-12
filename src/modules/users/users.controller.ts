@@ -24,9 +24,9 @@ const getAllUsers = async (req: Request, res: Response) => {
 };
 
 const updateUser = async (req: Request, res: Response) => {
+  const {userId} = req.params;
   try {
     const { role: userRole, id: loggedInUserId } = req.user as JwtPayload;
-    
     const result = await userServices.updateUser({
       ...req.body,
       userId: req.params.userId,
