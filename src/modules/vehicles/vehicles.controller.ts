@@ -75,16 +75,20 @@ const updateVehicleByID = async (req: Request, res: Response) => {
       vehicleId: req.params.vehicleId,
     });
 
-    if (result.rows.length === 0){
+    if (result.rows.length === 0) {
       throw new Error("Vehicle data not found.");
     }
 
     return res.status(200).json({
       success: true,
-      message: "Vehicle updated successfully"
-    })
+      message: "Vehicle updated successfully",
+      data: result.rows[0],
+    });
   } catch (err: any) {
-
+    return res.status(500).json({
+      success: false,
+      message
+    })
   }
 };
 
