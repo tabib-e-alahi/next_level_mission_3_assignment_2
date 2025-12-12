@@ -130,19 +130,17 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
 const deleteVehicle = async (payload: Record<string, unknown>) => {
   const { vehicleId } = payload;
 
-  const  = await pool.query(
+  const availability_status_result = await pool.query(
     "SELECT availability_status FROM Vehicles WHERE id=$1",
     [vehicleId]
   );
 
-  // If the vehicle is not found
-  if (statusResult.rows.length === 0) {
-    throw new Error("Vehicle not found.");
+  if (availability_status_result.rows.length === 0) {
+    throw new Error("Vehicle data not found!");
   }
 
-  const availability_status = statusResult.rows[0].availability_status;
+  const availability_status = availability_status_result.rows[0].availability_status;
 
-  // If the vehicle is not "booked", throw an error
   if (availability_status !== "booked") {
     throw new Error("Only vehicles with 'booked' status can be deleted.");
   }
