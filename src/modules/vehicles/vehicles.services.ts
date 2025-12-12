@@ -110,7 +110,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     throw new Error("There is no valid fields to update.");
   }
 
-  let final_result:any = 
+  let final_result:any = null; 
 
   for(const key in Object.keys){
     const result = await pool.query(
@@ -118,21 +118,11 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
       [updateFields[key], vehicleId]
     );
     if (result.rows.length > 0) {
-      final_result = result.rows[0]; // Update the vehicle data
+      final_result = result.rows[0]; 
     }
   }
-    
-
-
-    
   
-
-  // If no fields were updated, return null
-  if (!updatedVehicle) {
-    return null;
-  }
-
-  return result;
+  return final_result;
 };
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
