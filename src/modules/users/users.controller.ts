@@ -24,7 +24,7 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const updateUser = async(req: Request, res: Response) =>{
   try {
-    const result 
+    const result = await userServices.updateUser({...req.body})
     console.log(req.user);
   } catch (error) {
     
