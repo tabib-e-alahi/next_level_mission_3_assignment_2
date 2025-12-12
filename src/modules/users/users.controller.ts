@@ -28,13 +28,18 @@ const updateUser = async (req: Request, res: Response) => {
   const { role: userRole, id: loggedInUserId } = req.user as JwtPayload;
   try {
     if(userRole !== 'admin' && loggedInUserId !== parseInt(userId as string)){
-      throw new Error("You are not authorized to update")
+      throw new Error("You are not authorized to update this user profile.")
     }
     const result = await userServices.updateUser({
       ...req.body,
       userId: req.params.userId,
     });
-  } catch (error) {}
+  } catch (error) {
+    res.status(403).json({
+      success: false,
+      
+    })
+  }
 };
 
 export const userController = {
