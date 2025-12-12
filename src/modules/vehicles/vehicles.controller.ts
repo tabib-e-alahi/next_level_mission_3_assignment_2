@@ -51,7 +51,11 @@ const getVehicleById = async(req: Request, res: Response) =>{
   try {
     
   } catch (err: any) {
-    return res.status()
+    return res.status(500).json({
+      success: false,
+      message: "Vehicle data could not be retrieved."
+      error: err.message
+    })
   }
 }
 
