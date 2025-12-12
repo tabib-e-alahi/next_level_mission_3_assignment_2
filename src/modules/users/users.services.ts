@@ -19,21 +19,11 @@ const updateUser = async(payload: Record<string, unknown>) =>{
     userRole,
   } = payload;
 
-
-  if (password && password.length < 6) {
+  if (password && (password as string).length < 6) {
     throw new Error("Password must be minimum of 6 characters.");
   }
 
-  if (
-    availability_status &&
-    !["available", "booked"].includes(
-      (availability_status as string).toLowerCase()
-    )
-  ) {
-    throw new Error(
-      "Invalid inputs! Availability Status is either 'available' or 'booked'"
-    );
-  }
+  
 
 export const userServices = {
   getAllUsers,
