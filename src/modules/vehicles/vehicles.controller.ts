@@ -22,6 +22,12 @@ const createVehicle = async (req: Request, res: Response) => {
 //* retrieve all vehicles data
 const getAllVehicles = async(req: Request, res: Response) =>{
   const result = await vehicleServices.getAllVehicles();
+
+  if(result.rows.length === 0){
+    return res.status(200).json({
+      
+    })
+  }
 }
 
 export const vehicleController = {
