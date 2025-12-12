@@ -31,7 +31,7 @@ const updateUser = async(payload: Record<string, unknown>) =>{
 
   if (name) updateFields.name = name;
   if (email) updateFields.email = email;
-  if (password) updateFields.password = password;
+  if (password) updateFields.password = await bcrypt.hash(password as string, 10);;
   if (phone) updateFields.phone = phone;
   if (role) updateFields.role = role;
 }
