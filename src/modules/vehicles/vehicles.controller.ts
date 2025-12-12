@@ -77,7 +77,10 @@ const deleteVehicle = async (req: Request, res: Response) => {
       message: "Vehicle deleted successfully",
     });
   } catch (err: any) {
-    
+    return res.status(500).json({
+      success: false,
+      message: err.message,
+    });
   }
 };
 
@@ -85,4 +88,5 @@ export const vehicleController = {
   createVehicle,
   getAllVehicles,
   getVehicleById,
+  deleteVehicle
 };
