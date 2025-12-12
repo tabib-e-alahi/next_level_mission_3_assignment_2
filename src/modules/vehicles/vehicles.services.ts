@@ -1,6 +1,8 @@
 const getAllVehicles = async (payload: Record<string, unknown>) => {
     try {
         const {vehicle_name, type, registration_number, daily_rent_price, availability_status} = payload;
+
+        
     } catch (error) {
         
     }
