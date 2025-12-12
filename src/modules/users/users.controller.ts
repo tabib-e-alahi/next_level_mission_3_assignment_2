@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { userServices } from "./users.services";
+import { JwtPayload } from "jsonwebtoken";
 
 const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -24,7 +25,8 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const updateUser = async (req: Request, res: Response) => {
   try {
-    const { role: userRole, id: loggedInUserId } = req.user;
+    const { role: userRole, id: loggedInUserId } = req.user as JwtPayload;
+    
     const result = await userServices.updateUser({
       ...req.body,
       userId: req.params.userId,
