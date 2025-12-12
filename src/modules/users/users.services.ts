@@ -20,8 +20,8 @@ const updateUser = async(payload: Record<string, unknown>) =>{
   } = payload;
 
 
-  if (password && (daily_rent_price as number) <= 0) {
-    throw new Error(`Daily rent price must be positive: ${daily_rent_price}.`);
+  if (password && password.length < 6) {
+    throw new Error("Password must be minimum of 6 characters.");
   }
 
   if (
