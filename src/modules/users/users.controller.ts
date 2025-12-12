@@ -24,6 +24,7 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const updateUser = async(req: Request, res: Response) =>{
   try {
+    const result 
     console.log(req.user);
   } catch (error) {
     
