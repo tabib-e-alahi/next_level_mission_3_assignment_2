@@ -13,7 +13,8 @@ const getAllVehicles = async (payload: Record<string, unknown>) => {
         "Invalid vehicle types! Types: 'car', 'bike', 'van', or 'SUV'"
       );
     }
-    //checking
+    //checking daily rent price is positive or not
+    if(daily_rent_price >)
   } catch (error) {}
 };
 
