@@ -79,12 +79,12 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
 
   if (type && !["car", "bike", "van", "SUV"].includes(type as string)) {
     throw new Error(
-      "Invalid vehicle type. Allowed types are 'car', 'bike', 'van', 'SUV'"
+      "Invalid vehicle types! Types: 'car', 'bike', 'van', or 'SUV'"
     );
   }
 
   if (daily_rent_price !== undefined && (daily_rent_price as number) <= 0) {
-    throw new Error("Daily rent price must be positive.");
+    throw new Error(`Daily rent price must be positive: ${daily_rent_price}.`);
   }
 
   if (
@@ -94,7 +94,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     )
   ) {
     throw new Error(
-      "Invalid availability status. Allowed statuses are 'available' and 'booked'"
+      "Invalid inputs! Availability Status is either 'available' or 'booked'"
     );
   }
 };
