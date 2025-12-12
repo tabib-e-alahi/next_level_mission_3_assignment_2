@@ -25,8 +25,11 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const updateUser = async (req: Request, res: Response) => {
   const {userId} = req.params;
+  const { role: userRole, id: loggedInUserId } = req.user as JwtPayload;
   try {
-    const { role: userRole, id: loggedInUserId } = req.user as JwtPayload;
+    if(userRole !== 'admin' && loggedInUserId === parseInt(userId)){
+      
+    }
     const result = await userServices.updateUser({
       ...req.body,
       userId: req.params.userId,
