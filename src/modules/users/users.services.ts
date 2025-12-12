@@ -24,8 +24,10 @@ const updateUser = async(payload: Record<string, unknown>) =>{
   }
 
   if(userRole === 'admin' && !['admin', 'customer'].includes(role as string)){
-    throw new Error("user role can be either ''a")
+    throw new Error("user role can be either 'admin' or 'customer'");
   }
+
+}
 
 export const userServices = {
   getAllUsers,
