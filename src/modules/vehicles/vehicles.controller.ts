@@ -75,8 +75,6 @@ const updateVehicleByID = async (req: Request, res: Response) => {
       vehicleId: req.params.vehicleId,
     });
 
-    console.log("From controller: ", result);
-
     if (result.rows.length === 0) {
       throw new Error("Vehicle data not found.");
     }
