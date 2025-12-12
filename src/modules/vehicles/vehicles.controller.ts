@@ -68,7 +68,11 @@ const getVehicleById = async (req: Request, res: Response) => {
   }
 };
 
-const deleteVehicle = async
+const deleteVehicle = async (req: Request, res: Response) => {
+  try {
+    const result = await vehicleServices.deleteVehicle(req.params);
+  } catch (error) {}
+};
 
 export const vehicleController = {
   createVehicle,
