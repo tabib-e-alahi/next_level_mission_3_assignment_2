@@ -10,6 +10,9 @@ router.post("/", auth("admin"), vehicleController.createVehicle);
 router.get("/", vehicleController.getAllVehicles);
 
 //* get single vehicle by id
-router.get("/:vehicleId", vehicleController.getVehi);
+router.get("/:vehicleId", vehicleController.getVehicleById);
+
+//* delete a vehicle data
+router.delete("/:vehicleId", auth("admin"), vehicleController.deleteVehicle);
 
 export const vehicleRoutes = router;
