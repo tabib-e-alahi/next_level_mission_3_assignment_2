@@ -83,7 +83,7 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     );
   }
 
-  if (daily_rent_price !== undefined && (daily_rent_price as number) <= 0) {
+  if (daily_rent_price && (daily_rent_price as number) <= 0) {
     throw new Error(`Daily rent price must be positive: ${daily_rent_price}.`);
   }
 
