@@ -120,10 +120,9 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     }
   }
 
-  // Update registration_number if provided
   if (registration_number) {
     const result = await pool.query(
-      "UPDATE vehicles SET registration_number=$1 WHERE id=$2 RETURNING *",
+      ,
       [registration_number, vehicleId]
     );
     if (result.rows.length > 0) {
