@@ -56,10 +56,12 @@ const getAllVehicles = async () => {
 };
 
 const getVehicleById = async(payload: Record<string, unknown>) =>{
-  const vehi
+  const {vehicleId} = payload
   const result = await pool.query(`
     SELECT * FROM Vehicles WHERE id=$1
-    `, [])
+    `, [vehicleId])
+
+    return result;
 }
 
 export const vehicleServices = {
