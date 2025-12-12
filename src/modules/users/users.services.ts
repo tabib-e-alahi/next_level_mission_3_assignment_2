@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import { pool } from "../../config/db";
 
 const getAllUsers = async () => {
@@ -8,22 +9,14 @@ const getAllUsers = async () => {
   return result;
 };
 
-const updateUser = async(payload: Record<string, unknown>) =>{
-  const {
-    name,
-    email,
-    password,
-    phone,
-    role,
-    userId, 
-    userRole,
-  } = payload;
+const updateUser = async (payload: Record<string, unknown>) => {
+  const { name, email, password, phone, role, userId, userRole } = payload;
 
-  if (userRole == 'customer' && password && (password as string).length < 6) {
+  if (userRole == "customer" && password && (password as string).length < 6) {
     throw new Error("Password must be minimum of 6 characters.");
   }
 
-  if(userRole === 'admin' && !['admin', 'customer'].includes(role as string)){
+  if (userRole === "admin" && !["admin", "customer"].includes(role as string)) {
     throw new Error("user role can be either 'admin' or 'customer'");
   }
 
@@ -31,12 +24,18 @@ const updateUser = async(payload: Record<string, unknown>) =>{
 
   if (name) updateFields.name = name;
   if (email) updateFields.email = email;
-  if (password) updateFields.password = await bcrypt.hash(password as string, 10);;
+  if (password) {
+    updateFields.password = await bcrypt.hash(password as string, 10);
+  }
   if (phone) updateFields.phone = phone;
   if (role) updateFields.role = role;
-}
+
+  if (Object.keys(updateFields).length === 0) {
+    throw new Error("There is no valid fields to update.");
+  }
+};
 
 export const userServices = {
   getAllUsers,
-  updateUser
+  updateUser,
 };
