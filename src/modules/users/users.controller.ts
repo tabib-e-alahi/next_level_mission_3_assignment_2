@@ -24,7 +24,7 @@ const getAllUsers = async (req: Request, res: Response) => {
 
 const updateUser = async(req: Request, res: Response) =>{
   try {
-    const 
+    console.log(req.user);
   } catch (error) {
     
   }
@@ -32,4 +32,5 @@ const updateUser = async(req: Request, res: Response) =>{
 
 export const userController = {
   getAllUsers,
+  updateUser
 };
