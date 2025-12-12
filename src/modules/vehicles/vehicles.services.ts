@@ -47,16 +47,19 @@ const createVehicle = async (payload: Record<string, unknown>) => {
   return result;
 };
 
-const getAllVehicles = async() =>{
+const getAllVehicles = async () => {
   const result = await pool.query(`
     SELECT * FROM Vehicles
-    `)
+    `);
 
-  if(result.rows.length === 0)
-    throw new Error("Vehicles data could not be retrieved.")  
-}
+  if (result.rows.length === 0){
+    return
+  }
+
+  return result;
+};
 
 export const vehicleServices = {
   createVehicle,
-  getAllVehicles
+  getAllVehicles,
 };
