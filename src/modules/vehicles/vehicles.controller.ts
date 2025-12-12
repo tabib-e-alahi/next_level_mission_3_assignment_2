@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { vehicleServices } from "./vehicles.services";
 
-//! create vehicle controller
+//* create vehicle controller
 const createVehicle = async (req: Request, res: Response) => {
   try {
     const result = await vehicleServices.createVehicle(req.body);
