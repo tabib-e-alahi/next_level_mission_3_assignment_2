@@ -122,6 +122,8 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
       final_result = result; 
     }
   }
+
+  console.log("From service: ", final_result);
   
   return final_result;
 };
