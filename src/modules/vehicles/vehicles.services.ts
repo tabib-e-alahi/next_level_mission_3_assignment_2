@@ -76,17 +76,30 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
     daily_rent_price,
     availability_status,
   } = payload;
-  if (type && !["car", "bike", "van", "SUV"].includes(type)) {
-      return res.status(400).json({ message: "Invalid vehicle type. Allowed types are 'car', 'bike', 'van', 'SUV'" });
-    }
 
-    if (daily_rent_price !== undefined && daily_rent_price <= 0) {
-      return res.status(400).json({ message: `Daily rent price must be positive.` });
-    }
+  if (type && !["car", "bike", "van", "SUV"].includes(type as string)) {
+    throw new Error(
+      "Invalid vehicle type. Allowed types are 'car', 'bike', 'van', 'SUV'"
+    );
+  }
 
-    if (availability_status && !["available", "booked"].includes(availability_status.toLowerCase())) {
-      return res.status(400).json({ message: "Invalid availability status. Allowed statuses are 'available' and 'booked'" });
-    }
+  if (daily_rent_price !== undefined && daily_rent_price! <= 0) {
+    return res
+      .status(400)
+      .json({ message: `Daily rent price must be positive.` });
+  }
+
+  if (
+    availability_status &&
+    !["available", "booked"].includes(availability_status.toLowerCase())
+  ) {
+    return res
+      .status(400)
+      .json({
+        message:
+          "Invalid availability status. Allowed statuses are 'available' and 'booked'",
+      });
+  }
 };
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
