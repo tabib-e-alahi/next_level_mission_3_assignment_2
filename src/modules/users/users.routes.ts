@@ -7,4 +7,6 @@ const router = Router();
 // get all users
 router.get("/", auth("admin"), userController.getAllUsers);
 
+router.put("/:userId", auth("admin"))
+
 export const userRoutes = router;
