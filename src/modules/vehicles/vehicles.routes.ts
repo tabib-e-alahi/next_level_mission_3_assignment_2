@@ -3,7 +3,10 @@ import auth from "../../middleware/auth";
 import { vehicleController } from "./vehicles.controller";
 const router = Router();
 
-//create a vehicle
-router.post("/", auth("admin"), vehicleController.createVehicle)
+//* create a vehicle
+router.post("/", auth("admin"), vehicleController.createVehicle);
+
+//* get all vehicles
+router.get("/", vehicleController)
 
 export const vehicleRoutes = router;
