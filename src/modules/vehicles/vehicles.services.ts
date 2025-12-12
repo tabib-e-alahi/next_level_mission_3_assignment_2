@@ -102,31 +102,50 @@ const updateVehicleByID = async (payload: Record<string, unknown>) => {
 
   if (vehicle_name) updateFields.vehicle_name = vehicle_name;
   if (type) updateFields.type = type;
-  if (registration_number) updateFields.registration_number = registration_number;
+  if (registration_number)
+    updateFields.registration_number = registration_number;
   if (daily_rent_price) updateFields.daily_rent_price = daily_rent_price;
-  if (availability_status) updateFields.availability_status = availability_status;
+  if (availability_status)
+    updateFields.availability_status = availability_status;
 
   if (Object.keys(updateFields).length === 0) {
     throw new Error("There is no valid fields to update.");
   }
 
-  let final_result: any = null; 
+  let final_result: any = null;
 
-  for(const key of Object.keys(updateFields)){
+  for (const key of Object.keys(updateFields)) {
     const result = await pool.query(
       `UPDATE Vehicles SET ${key}=$1 WHERE id=$2 RETURNING *`,
       [updateFields[key], vehicleId]
     );
     if (result.rows.length > 0) {
-      final_result = result; 
+      final_result = result;
     }
   }
-  
+
   return final_result;
 };
 
 const deleteVehicle = async (payload: Record<string, unknown>) => {
   const { vehicleId } = payload;
+
+  const  = await pool.query(
+    "SELECT availability_status FROM Vehicles WHERE id=$1",
+    [vehicleId]
+  );
+
+  // If the vehicle is not found
+  if (statusResult.rows.length === 0) {
+    throw new Error("Vehicle not found.");
+  }
+
+  const availability_status = statusResult.rows[0].availability_status;
+
+  // If the vehicle is not "booked", throw an error
+  if (availability_status !== "booked") {
+    throw new Error("Only vehicles with 'booked' status can be deleted.");
+  }
   const result = await pool.query(`DELETE FROM Vehicles WHERE id=$1`, [
     vehicleId,
   ]);
