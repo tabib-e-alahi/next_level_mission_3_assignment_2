@@ -32,8 +32,8 @@ const updateUser = async(payload: Record<string, unknown>) =>{
   if (name) updateFields.name = name;
   if (email) updateFields.email = email;
   if (password) updateFields.password = password;
-  if (name) updateFields.name = name;
-  if (name) updateFields.name = name;
+  if (phone) updateFields.phone = phone;
+  if (role) updateFields.role = role;
 }
 
 export const userServices = {
