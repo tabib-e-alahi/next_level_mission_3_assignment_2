@@ -19,7 +19,7 @@ const updateUser = async(payload: Record<string, unknown>) =>{
     userRole,
   } = payload;
 
-  if (password && (password as string).length < 6) {
+  if (userRole == 'customer' && password && (password as string).length < 6) {
     throw new Error("Password must be minimum of 6 characters.");
   }
 
