@@ -27,6 +27,13 @@ const updateUser = async(payload: Record<string, unknown>) =>{
     throw new Error("user role can be either 'admin' or 'customer'");
   }
 
+  let updateFields: any = {};
+
+  if (name) updateFields.name = name;
+  if (email) updateFields.email = email;
+  if (password) updateFields.password = password;
+  if (name) updateFields.name = name;
+  if (name) updateFields.name = name;
 }
 
 export const userServices = {
