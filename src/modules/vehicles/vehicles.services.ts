@@ -142,8 +142,9 @@ const deleteVehicle = async (payload: Record<string, unknown>) => {
   const availability_status = availability_status_result.rows[0].availability_status;
 
   if (availability_status !== "booked") {
-    throw new Error("Only vehicles with 'booked' status can be deleted.");
+    throw new Error("This vehicle is active now. Active vehicles can not be deleted.");
   }
+  
   const result = await pool.query(`DELETE FROM Vehicles WHERE id=$1`, [
     vehicleId,
   ]);
