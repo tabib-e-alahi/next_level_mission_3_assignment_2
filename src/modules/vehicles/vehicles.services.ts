@@ -71,7 +71,7 @@ const updateVehicleByID = async(payload:Record<string, unknown>) =>{
 
 }
 
-const deleteVehicle = async (payload: Record<string, unknown>) => {
+const deleteVehicle = async (obj) => {
   const { vehicleId } = payload;
   const result = await pool.query(`DELETE FROM Vehicles WHERE id=$1`, [
     vehicleId,
