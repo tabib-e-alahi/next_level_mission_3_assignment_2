@@ -29,8 +29,9 @@ const updateUser = async (req: Request, res: Response) => {
   try {
     // if the user is not admin and also trying to update another profile
     if (userRole !== "admin") {
-      
-      throw new Error("You are not authorized to update this user profile.");
+      if(loggedInUserId !== parseInt(userId as string))
+        throw new Error("You are not authorized to update this user profile.");
+      else
     }
     const result = await userServices.updateUser({
       ...req.body,
