@@ -38,9 +38,10 @@ const getAllVehicles = async (req: Request, res: Response) => {
       data: result.rows,
     });
   } catch (err: any) {
-    return res.status(200).json({
-      success: true,
+    return res.status(500).json({
+      success: false,
       message: "Vehicles data could not be retrieved.",
+      error: err.message,
       data: null,
     });
   }
