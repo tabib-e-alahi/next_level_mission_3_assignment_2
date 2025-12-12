@@ -47,20 +47,20 @@ const getAllVehicles = async (req: Request, res: Response) => {
   }
 };
 
-const getVehicleById = async(req: Request, res: Response) =>{
+const getVehicleById = async (req: Request, res: Response) => {
   try {
     
   } catch (err: any) {
     return res.status(500).json({
       success: false,
-      message: "Vehicle data could not be retrieved."
-      error: err.message
-    })
+      message: "Vehicle data could not be retrieved.",
+      error: err.message,
+    });
   }
-}
+};
 
 export const vehicleController = {
   createVehicle,
   getAllVehicles,
-  getVehicleById
+  getVehicleById,
 };
