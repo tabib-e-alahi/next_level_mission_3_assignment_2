@@ -33,6 +33,12 @@ const getAllBookings = async (req: Request, res: Response) => {
     if (result?.rows.length === 0) {
       throw new Error("No bookings data dound.");
     }
+
+    return res.status(200).json({
+        "success": true,
+        "message": "Bookings retrieved successfully",
+        data
+    })
   } catch (err: any) {
     return res.status(403).json({
       success: false,
