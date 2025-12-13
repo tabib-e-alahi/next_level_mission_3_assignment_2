@@ -16,14 +16,17 @@ const createBookings = async (payload: Record<string, unknown>) => {
   if (rent_duration_in_days <= 0) {
     throw new Error("Vehicle Rental duration must be greater that 0.");
   }
-  
-  const vehicle_data = await pool.query(`SELECT * FROM Vehicles WHERE id=$1`, [vehicle_id]);
+
+  const vehicle_data = await pool.query(`SELECT * FROM Vehicles WHERE id=$1`, [
+    vehicle_id,
+  ]);
 
   if (vehicle_data.rows.length === 0) {
-      throw new Error("Vehicle data not found.");
-    }
+    throw new Error("Vehicle data not found.");
+  }
 
-    const total_price: number = vehicle_data.daily_rent_price * rent_duration_in_days
+  const total_price: number =
+    vehicle_data.rows[0].daily_rent_price * rent_duration_in_days;
 };
 
 export const bookingServices = {
