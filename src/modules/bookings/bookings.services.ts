@@ -35,14 +35,14 @@ const createBookings = async (payload: Record<string, unknown>) => {
   );
 
   return {
-    booking_id: result.rows[0].id,
+    id: result.rows[0].id,
     customer_id,
     vehicle_id,
     rent_start_date,
     rent_end_date,
     total_price,
     status: "active",
-    vehicle_data: {
+    vehicle: {
       vehicle_name: vehicle_data.rows[0].vehicle_name,
       daily_rent_price: vehicle_data.rows[0].daily_rent_price,
     },
