@@ -17,7 +17,8 @@ const createBookings = async (payload: Record<string, unknown>) => {
     throw new Error("Vehicle Rental duration must be greater that 0.");
   }
   
-  const vehicle_daily_rent_price = await pool.query(`SELECT daily_rent_price`)
+  const vehicle_daily_rent_price = await pool.query(`SELECT daily_rent_price FROM Vehicles WHERE id=$1`, [vehicle_id]);
+  
 };
 
 export const bookingServices = {
