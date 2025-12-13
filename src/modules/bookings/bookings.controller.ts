@@ -25,19 +25,19 @@ const createBookings = async (req: Request, res: Response) => {
   }
 };
 
-const getAllBookings = async(req: Request, res: Response) =>{
-    try {
-        
-    } catch (err: any) {
-        return res.status(403).json({
-            success: false,
-            message:""
-        })
-        
-    }
-}
+const getAllBookings = async (req: Request, res: Response) => {
+  try {
+    const result = await bookingServices.
+  } catch (err: any) {
+    return res.status(403).json({
+      success: false,
+      message: "Bookings data could not be retrieved.",
+      error: err.message,
+    });
+  }
+};
 
 export const bookingController = {
   createBookings,
-  getAllBookings
+  getAllBookings,
 };
