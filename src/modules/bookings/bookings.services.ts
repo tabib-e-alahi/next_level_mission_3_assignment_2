@@ -11,7 +11,7 @@ const createBookings = async (payload: Record<string, unknown>) => {
   }
 
   const rent_duration_in_days =
-    (end_date.getTime() - start_date.getTime()) / (1000 * 36000 * 24);
+    (end_date.getTime() - start_date.getTime()) / (1000 * 3600 * 24);
 
   if (rent_duration_in_days <= 0) {
     throw new Error("Vehicle Rental duration must be greater that 0.");
@@ -28,12 +28,11 @@ const createBookings = async (payload: Record<string, unknown>) => {
   const total_price =
     vehicle_data.rows[0].daily_rent_price * rent_duration_in_days;
 
-    // const result = await pool.query(
-    //   `INSERT INTO Bookings (customer_id, vehicle_id, rent_start_date, rent_end_date, total_price, status) 
-    //    VALUES ($1, $2, $3, $4, $5, 'active') RETURNING *`,
-    //   [customer_id, vehicle_id, rent_start_date, rent_end_date, total_price]
-    // );
-    console.log(rent_end_date, rent_start_date, total_price, rent_duration_in_days);
+  const result = await pool.query(
+    `INSERT INTO Bookings (customer_id, vehicle_id, rent_start_date, rent_end_date, total_price, status) 
+       VALUES ($1, $2, $3, $4, $5, 'active') RETURNING *`,
+    [customer_id, vehicle_id, rent_start_date, rent_end_date, total_price]
+  );
 };
 
 export const bookingServices = {
