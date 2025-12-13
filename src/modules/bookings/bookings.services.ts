@@ -33,6 +33,19 @@ const createBookings = async (payload: Record<string, unknown>) => {
        VALUES ($1, $2, $3, $4, $5, 'active') RETURNING *`,
     [customer_id, vehicle_id, rent_start_date, rent_end_date, total_price]
   );
+  return {
+    booking_id: result.rows[0].id,
+    customer_id,
+    vehicle_id,
+    rent_start_date,
+    rent_end_date,
+    total_price: totalPrice,
+    status: "active",
+    vehicle: {
+      vehicle_name: vehicle.vehicle_name,
+      daily_rent_price: vehicle.daily_rent_price,
+    },
+  };
 };
 
 export const bookingServices = {
