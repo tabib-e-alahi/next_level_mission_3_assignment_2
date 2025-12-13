@@ -14,6 +14,8 @@ const createBookings = async (payload: Record<string, unknown>) => {
   if (rent_duration_in_days <= 0) {
     throw new Error("Vehicle Rental duration must be greater that 0.");
   }
+  
+  const 
 };
 
 export const bookingServices = {
