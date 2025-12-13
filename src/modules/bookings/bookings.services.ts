@@ -33,7 +33,7 @@ const createBookings = async (payload: Record<string, unknown>) => {
     //    VALUES ($1, $2, $3, $4, $5, 'active') RETURNING *`,
     //   [customer_id, vehicle_id, rent_start_date, rent_end_date, total_price]
     // );
-    console.log(rent_end_date, rent_start_date);
+    console.log(rent_end_date, rent_start_date, total_price, rent_duration_in_days);
 };
 
 export const bookingServices = {
