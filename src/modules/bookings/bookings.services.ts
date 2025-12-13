@@ -27,6 +27,8 @@ const createBookings = async (payload: Record<string, unknown>) => {
 
   const total_price =
     vehicle_data.rows[0].daily_rent_price * rent_duration_in_days;
+  
+    
 
   const result = await pool.query(
     `INSERT INTO Bookings (customer_id, vehicle_id, rent_start_date, rent_end_date, total_price, status) 
@@ -57,7 +59,6 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
 
     return result;
   } else if (userRole === "customer") {
-    const book_result = await pool.query(`SELECT status FROM Bookings `)
     const result = await pool.query(
       `SELECT * FROM Bookings WHERE customer_id=$1`,
       [loggedInUserId]
