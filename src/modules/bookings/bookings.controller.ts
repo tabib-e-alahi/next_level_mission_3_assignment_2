@@ -25,6 +25,15 @@ const createBookings = async (req: Request, res: Response) => {
   }
 };
 
+const getAllBookings = async(req: Request, res: Response) =>{
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
 export const bookingController = {
   createBookings,
+  getAllBookings
 };
