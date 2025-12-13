@@ -52,7 +52,9 @@ const createBookings = async (payload: Record<string, unknown>) => {
 const getAllBookings = async(payload: Record<string, unknown>)=>{
   const { role: userRole, id: loggedInUserId } = payload;
 
-  if
+  if(userRole === 'admin'){
+    const result = 
+  }
 
 }
 
