@@ -27,10 +27,15 @@ const createBookings = async (payload: Record<string, unknown>) => {
 
   const total_price =
     vehicle_data.rows[0].daily_rent_price * rent_duration_in_days;
-  
-  const book_vehicle_status = await pool.query(`SELECT status FROM Bookings WHERE vehicle_id=$1`, [vehicle_id]);
-  
-  if(book_vehicle_status.rows[0].status === 'active'){}
+
+  const book_vehicle_status = await pool.query(
+    `SELECT status FROM Bookings WHERE vehicle_id=$1`,
+    [vehicle_id]
+  );
+
+  if (book_vehicle_status.rows[0].status === "active") {
+    throw new Error("This vehicle is already booked.");
+  }
 
   const result = await pool.query(
     `INSERT INTO Bookings (customer_id, vehicle_id, rent_start_date, rent_end_date, total_price, status) 
