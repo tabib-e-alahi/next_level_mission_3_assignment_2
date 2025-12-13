@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { bookingServices } from "./bookings.services";
 import { vehicleServices } from "../vehicles/vehicles.services";
+import { JwtPayload } from "jsonwebtoken";
 
 const createBookings = async (req: Request, res: Response) => {
   try {
@@ -27,6 +28,7 @@ const createBookings = async (req: Request, res: Response) => {
 
 const getAllBookings = async (req: Request, res: Response) => {
   try {
+    const { role: userRole, id: loggedInUserId } = req.user as JwtPayload;
     const result = await bookingServices.getAllBookings();
   } catch (err: any) {
     return res.status(403).json({
