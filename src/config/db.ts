@@ -23,7 +23,7 @@ const initDB = async () => {
         vehicle_name VARCHAR(200) NOT NULL,
         type VARCHAR(10) NOT NULL,
         registration_number VARCHAR(100) UNIQUE NOT NULL,
-        daily_rent_price INT NOT NULL,
+        daily_rent_price FLOAT NOT NULL,
         availability_status VARCHAR(20) NOT NULL
         )
         `);
@@ -35,7 +35,7 @@ const initDB = async () => {
         vehicle_id INT REFERENCES Vehicles(id) ON DELETE CASCADE,
         rent_start_date DATE NOT NULL,
         rent_end_date DATE NOT NULL,
-        total_price INT NOT NULL,
+        total_price FLOAT NOT NULL,
         status VARCHAR(10) NOT NULL
         )
         `);
