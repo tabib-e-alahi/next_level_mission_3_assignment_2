@@ -11,7 +11,9 @@ const createBookings = async (payload: Record<string, unknown>) => {
   const rent_duration_in_days =
     (end_date.getTime() - start_date.getTime()) / (1000 * 36000 * 24);
 
-    
+  if (rent_duration_in_days <= 0) {
+    throw new Error("Vehicle Rental duration must be greater that 0.");
+  }
 };
 
 export const bookingServices = {
