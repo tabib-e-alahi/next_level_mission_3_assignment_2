@@ -33,6 +33,7 @@ const createBookings = async (payload: Record<string, unknown>) => {
        VALUES ($1, $2, $3, $4, $5, 'active') RETURNING *`,
     [customer_id, vehicle_id, rent_start_date, rent_end_date, total_price]
   );
+
   return {
     booking_id: result.rows[0].id,
     customer_id,
@@ -42,8 +43,8 @@ const createBookings = async (payload: Record<string, unknown>) => {
     total_price,
     status: "active",
     vehicle_data: {
-      vehicle_name: vehicle_data.vehicle_name,
-      daily_rent_price: vehicle_data.daily_rent_price,
+      vehicle_name: vehicle_data.rows[0].vehicle_name,
+      daily_rent_price: vehicle_data.rows[0].daily_rent_price,
     },
   };
 };
