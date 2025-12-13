@@ -49,16 +49,17 @@ const createBookings = async (payload: Record<string, unknown>) => {
   };
 };
 
-const getAllBookings = async(payload: Record<string, unknown>)=>{
+const getAllBookings = async (payload: Record<string, unknown>) => {
   const { role: userRole, id: loggedInUserId } = payload;
 
-  if(userRole === 'admin'){
-    const result = 
-  }
+  if (userRole === "admin") {
+    const result = await pool.query(`SELECT * FROM Bookings`);
 
-}
+    return result;
+  }
+};
 
 export const bookingServices = {
   createBookings,
-  getAllBookings
+  getAllBookings,
 };
