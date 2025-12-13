@@ -6,7 +6,8 @@ const createBookings = async (req: Request, res: Response) => {
     } catch (err: any) {
         return res.status(500).json({
             success: false,
-            message:
+            message: "Booking failed.",
+            error: err
         })
         
     }
