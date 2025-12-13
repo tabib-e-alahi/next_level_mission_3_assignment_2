@@ -41,9 +41,9 @@ const createBookings = async (payload: Record<string, unknown>) => {
     rent_end_date,
     total_price,
     status: "active",
-    vehicle: {
-      vehicle_name: vehicle.vehicle_name,
-      daily_rent_price: vehicle.daily_rent_price,
+    vehicle_data: {
+      vehicle_name: vehicle_data.vehicle_name,
+      daily_rent_price: vehicle_data.daily_rent_price,
     },
   };
 };
