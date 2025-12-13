@@ -21,4 +21,7 @@ app.use("/api/v1/users", userRoutes);
 //! vehicles routes ------------------------>
 app.use("/api/v1/vehicles", vehicleRoutes);
 
+//! bookingss routes ------------------------>
+app.use("/api/v1/vehicles", vehicleRoutes);
+
 export default app;

@@ -1,7 +1,7 @@
 import { Router } from "express";
 
-const router  = Router();
+const router = Router();
 
 router.post();
 
-export const bookingRoute
+export const bookingRoutes = router;
