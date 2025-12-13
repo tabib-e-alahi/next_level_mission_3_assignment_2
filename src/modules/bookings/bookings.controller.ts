@@ -28,7 +28,11 @@ const createBookings = async (req: Request, res: Response) => {
 const getAllBookings = async(req: Request, res: Response) =>{
     try {
         
-    } catch (error) {
+    } catch (err: any) {
+        return res.status(403).json({
+            success: false,
+            message:""
+        })
         
     }
 }
