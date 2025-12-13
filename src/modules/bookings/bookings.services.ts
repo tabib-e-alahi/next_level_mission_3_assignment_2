@@ -19,6 +19,10 @@ const createBookings = async (payload: Record<string, unknown>) => {
   
   const vehicle_data = await pool.query(`SELECT * FROM Vehicles WHERE id=$1`, [vehicle_id]);
 
+  if (vehicle_data.rows.length === 0) {
+      throw new Error("Vehicle data not found.");
+    }
+
     const total_price: number = vehicle_data.daily_rent_price * rent_duration_in_days
 };
 
