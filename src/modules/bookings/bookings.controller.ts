@@ -35,10 +35,10 @@ const getAllBookings = async (req: Request, res: Response) => {
     }
 
     return res.status(200).json({
-        "success": true,
-        "message": "Bookings retrieved successfully",
-        data
-    })
+      success: true,
+      message: "Bookings retrieved successfully",
+      data: result?.rows,
+    });
   } catch (err: any) {
     return res.status(403).json({
       success: false,
