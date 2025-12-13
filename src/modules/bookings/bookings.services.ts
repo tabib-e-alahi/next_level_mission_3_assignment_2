@@ -19,7 +19,7 @@ const createBookings = async (payload: Record<string, unknown>) => {
   
   const vehicle_daily_rent_price = await pool.query(`SELECT daily_rent_price FROM Vehicles WHERE id=$1`, [vehicle_id]);
 
-   const total_price: number = vehicle_daily_rent_price * number_of_days
+   const total_price: number = parseFloat(vehicle_daily_rent_price) * rent_duration_in_days
 };
 
 export const bookingServices = {
