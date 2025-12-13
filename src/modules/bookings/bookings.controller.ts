@@ -27,7 +27,7 @@ const createBookings = async (req: Request, res: Response) => {
 
 const getAllBookings = async (req: Request, res: Response) => {
   try {
-    const result = await bookingServices.
+    const result = await bookingServices.getAllBookings();
   } catch (err: any) {
     return res.status(403).json({
       success: false,

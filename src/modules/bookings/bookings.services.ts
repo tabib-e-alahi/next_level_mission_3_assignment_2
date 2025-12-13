@@ -49,6 +49,11 @@ const createBookings = async (payload: Record<string, unknown>) => {
   };
 };
 
+const getAllBookings = async()=>{
+  
+}
+
 export const bookingServices = {
   createBookings,
+  getAllBookings
 };
