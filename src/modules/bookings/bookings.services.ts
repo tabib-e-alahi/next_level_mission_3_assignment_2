@@ -8,9 +8,9 @@ const createBookings = async (payload: Record<string, unknown>) => {
     throw new Error("Rent end date must be after the rent start date!");
   }
   const start_date_in_milisec: number = start_date.getTime();
-  const start_end_in_milisec: number = end_date.getTime();
+  const end_date_in_milisec: number = end_date.getTime();
 
-  const duration_in_days =  
+  const duration_in_days =   
 
 };
 
