@@ -28,8 +28,7 @@ const createBookings = async (req: Request, res: Response) => {
 
 const getAllBookings = async (req: Request, res: Response) => {
   try {
-    const { role: userRole, id: loggedInUserId } = req.user as JwtPayload;
-    const result = await bookingServices.getAllBookings();
+    const result = await bookingServices.getAllBookings(req.user as JwtPayload);
   } catch (err: any) {
     return res.status(403).json({
       success: false,
