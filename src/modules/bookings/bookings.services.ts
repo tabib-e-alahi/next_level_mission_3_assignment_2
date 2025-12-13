@@ -8,8 +8,10 @@ const createBookings = async (payload: Record<string, unknown>) => {
     throw new Error("Rent end date must be after the rent start date!");
   }
 
-  const duration_in_days =
+  const rent_duration_in_days =
     (end_date.getTime() - start_date.getTime()) / (1000 * 36000 * 24);
+
+    
 };
 
 export const bookingServices = {
