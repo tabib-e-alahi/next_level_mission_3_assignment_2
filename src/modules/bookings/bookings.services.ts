@@ -4,7 +4,10 @@ const createBookings = async (payload: Record<string, unknown>) => {
     const start_date = new Date(rent_start_date as string);
     const end_date = new Date(rent_end_date as string);
 
-    if(start_date >= end_date)
+    if(start_date >= end_date){
+        throw new Error("Rent end date must be after the rent start date!");
+        return
+    }
 };
 
 export const bookingServices = {
