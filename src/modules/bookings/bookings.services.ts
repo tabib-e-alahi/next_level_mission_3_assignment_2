@@ -10,7 +10,7 @@ const createBookings = async (payload: Record<string, unknown>) => {
   const start_date_in_milisec: number = start_date.getTime();
   const start_end_in_milisec: number = end_date.getTime();
 
-  const duration
+  const duration_in_days =  
 
 };
 
