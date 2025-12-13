@@ -1,3 +1,5 @@
+import { pool } from "../../config/db";
+
 const createBookings = async (payload: Record<string, unknown>) => {
   const { customer_id, vehicle_id, rent_start_date, rent_end_date } = payload;
 
@@ -15,7 +17,7 @@ const createBookings = async (payload: Record<string, unknown>) => {
     throw new Error("Vehicle Rental duration must be greater that 0.");
   }
   
-  const 
+  const vehicle_daily_rent_price = await pool.query(`SELECT daily_rent_price`)
 };
 
 export const bookingServices = {
