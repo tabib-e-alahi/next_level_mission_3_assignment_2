@@ -57,7 +57,7 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
 
     return result;
   } else if (userRole === "customer") {
-    const book_result = await pool.query
+    const book_result = await pool.query(`SELECT status FROM Bookings `)
     const result = await pool.query(
       `SELECT * FROM Bookings WHERE customer_id=$1`,
       [loggedInUserId]
