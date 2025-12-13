@@ -7,8 +7,7 @@ const createBookings = async (req: Request, res: Response) => {
     const result = await bookingServices.createBookings(req.body);
 
     await vehicleServices.updateVehicleByID({
-      vehicleId: result.v
-      ehicle_id,
+      vehicleId: result.vehicle_id,
       availability_status: "booked",
     });
   } catch (err: any) {
