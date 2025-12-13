@@ -10,6 +10,12 @@ const createBookings = async (req: Request, res: Response) => {
       vehicleId: result.vehicle_id,
       availability_status: "booked",
     });
+
+    res.status(201).json({
+      success: true,
+      message: "Booking created successfully",
+      data: result,
+    });
   } catch (err: any) {
     return res.status(400).json({
       success: false,
