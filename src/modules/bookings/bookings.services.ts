@@ -33,7 +33,7 @@ const createBookings = async (payload: Record<string, unknown>) => {
     [vehicle_id]
   );
 
-  if (book_vehicle_status.rows[0].status === "active") {
+  if (book_vehicle_status.rows.length !== 0 && book_vehicle_status.rows[0].status === "active") {
     throw new Error("This vehicle is already booked.");
   }
 
