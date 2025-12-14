@@ -187,21 +187,21 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     `UPDATE Vehicles SET availability_status=$1 WHERE id=$2 RETURNING *`,
     ["available", vehicleId]
   );
-if(userRole === 'admin'){}
-  return {
-    id: booking_result.rows[0].id,
-    customer_id: booking_result.rows[0].customer_id,
-    vehicle_id: vehicleId,
-    rent_start_date: booking_result.rows[0].rent_start_date,
-    rent_end_date: booking_result.rows[0].rent_end_date,
-    total_price: booking_result.rows[0].total_price,
-    status: booking_result.rows[0].status,
-    vehicle: {
-      availability_status: vehicle_result.rows[0].availability_status,
-    },
-  };
-
-  return [booking_result.rows[0], vehicle_result.rows[0]];
+  if (userRole === "admin") {
+    return {
+      id: booking_result.rows[0].id,
+      customer_id: booking_result.rows[0].customer_id,
+      vehicle_id: vehicleId,
+      rent_start_date: booking_result.rows[0].rent_start_date,
+      rent_end_date: booking_result.rows[0].rent_end_date,
+      total_price: booking_result.rows[0].total_price,
+      status: booking_result.rows[0].status,
+      vehicle: {
+        availability_status: vehicle_result.rows[0].availability_status,
+      },
+    };
+  }
+  return booking_result.rows[0];
 };
 
 export const bookingServices = {
