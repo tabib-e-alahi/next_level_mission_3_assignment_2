@@ -48,16 +48,16 @@ const getAllBookings = async (req: Request, res: Response) => {
   }
 };
 
-const updateBookings = async(req: Request, res: Response) =>{
+const updateBookings = async (req: Request, res: Response) => {
   try {
-    
   } catch (err: any) {
     res.status(403).json({
-      
-    })
-    
-  }  
-}
+      success: false,
+      message: "Update booking failed.",
+      error: err.message,
+    });
+  }
+};
 
 export const bookingController = {
   createBookings,
