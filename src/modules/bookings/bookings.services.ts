@@ -118,6 +118,8 @@ const updateBookings = async (payload: Record<string, unknown>) => {
   ) {
     throw new Error("You are not authorized to update this.");
   }
+
+  
 };
 
 export const bookingServices = {
