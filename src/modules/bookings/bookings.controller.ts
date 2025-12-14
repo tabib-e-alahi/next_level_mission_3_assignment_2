@@ -52,7 +52,9 @@ const updateBookings = async(req: Request, res: Response) =>{
   try {
     
   } catch (err: any) {
-    m
+    res.status(403).json({
+      
+    })
     
   }  
 }
