@@ -156,7 +156,7 @@ const updateBookings = async (payload: Record<string, unknown>) => {
   ]);
 
   if (!booking_info.rows.length) {
-    throw new Error("Booking not found");
+    throw new Error("Booking data not found");
   }
 
   const booking = booking_info.rows[0];
