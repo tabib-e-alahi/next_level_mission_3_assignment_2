@@ -107,19 +107,19 @@ const updateBookings = async (payload: Record<string, unknown>) => {
 
     return final_result;
   }
-  const customer_info = await pool.query(
-    `SELECT customer_id FROM Bookings WHERE id=$1`,
+  const booking_info = await pool.query(
+    `SELECT * FROM Bookings WHERE id=$1`,
     [bookingId]
   );
 
   if (
     userRole !== "admin" &&
-    !(customer_info.rows[0].customer_id !== loggedInUserId)
+    !(booking_info.rows[0].customer_id !== loggedInUserId)
   ) {
     throw new Error("You are not authorized to update this.");
   }
 
-  if()
+  if(booking_info.rows[0].rent_end_date.getTime)
 
 
 };
