@@ -153,7 +153,6 @@ const updateBookings = async (payload: Record<string, unknown>) => {
       rent_end_date: result.rows[0].rent_end_date,
       total_price: result.rows[0].total_price,
       status: result.rows[0].status,
-
     };
 };
 
