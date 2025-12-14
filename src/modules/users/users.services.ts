@@ -67,10 +67,9 @@ const deleteUser = async (payload: Record<string, unknown>) => {
         "This user has active bookings. You can not delete this user."
       );
     }
+    const result = await pool.query(`DELETE FROM Users WHERE id=$1`, [userId]);
 
-    const result = await pool.query(`DELETE FROM Vehicles WHERE id=$1`, [
-    userId,
-  ]);
+    return result;
   }
 };
 
