@@ -59,8 +59,9 @@ const deleteUser = async (payload: Record<string, unknown>) => {
 
   console.log(booking_status);
 
+  //if 'active' bookings exist
   if(booking_status.includes('active')){
-    
+    throw new Error("This user has active bookings. You can delete this user.")
   }
 
 }
