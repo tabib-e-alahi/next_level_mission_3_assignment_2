@@ -75,7 +75,7 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
   }
 };
 
-const updateBookings = async()
+
 
 export const bookingServices = {
   createBookings,

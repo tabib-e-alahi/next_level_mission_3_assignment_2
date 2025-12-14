@@ -48,6 +48,9 @@ const getAllBookings = async (req: Request, res: Response) => {
   }
 };
 
+const updateBookings = async(req: Request, res: Response) =>{  
+}
+
 export const bookingController = {
   createBookings,
   getAllBookings,
