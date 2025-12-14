@@ -107,6 +107,8 @@ const updateBookings = async (payload: Record<string, unknown>) => {
 
     return final_result;
   }
+  const customer
+  if(userRole !== 'admin' && )
 };
 
 export const bookingServices = {
