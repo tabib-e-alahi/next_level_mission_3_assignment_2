@@ -51,6 +51,8 @@ const updateUser = async (payload: Record<string, unknown>) => {
   return final_result;
 };
 
+const deleteUser
+
 export const userServices = {
   getAllUsers,
   updateUser,
