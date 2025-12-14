@@ -7,8 +7,10 @@ const router = Router();
 // get all users
 router.get("/", auth("admin"), userController.getAllUsers);
 
+// update a user: admin can update all
 router.put("/:userId", auth("admin", "customer"), userController.updateUser);
 
-router.delete("/:userId", auth("admin"));
+//delete a user if no active booking exist
+router.delete("/:userId", auth("admin"), userController.deleteUser);
 
 export const userRoutes = router;
