@@ -9,9 +9,11 @@ const autoReturnBookings = async () => {
     return;
   }
 
-  const rent_date_ended_bookings = bookings_info.rows.filter(booking => new Date(booking.rent_end_date).getTime() > Date.now())
+  const rent_date_ended_bookings = bookings_info.rows.filter(
+    (booking) => new Date(booking.rent_end_date).getTime() > Date.now()
+  );
 
-  for (const booking in rent_date_ended_bookings) {
+  for (const booking of rent_date_ended_bookings) {
     await pool.query(`UPDATE Bookings SET status='returned' WHERE id=$1`, [
       booking.id,
     ]);
