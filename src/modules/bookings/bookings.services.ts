@@ -81,17 +81,15 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
 const updateBookings = async (payload: Record<string, unknown>) => {
   const { bookingId, userRole, loggedInUserId } = payload;
   if (userRole === "admin") {
-    const booking_status = "returned";
     const result = await pool.query(
       `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
-      [booking_status, bookingId]
+      ["returned", bookingId]
     );
 
-    const vehicle_status = "available";
     const vehicleId = result.rows[0].vehicle_id;
     const vehicle_result = await pool.query(
       `UPDATE Vehicles SET availability_status=$1 WHERE id=$2 RETURNING *`,
-      [vehicle_status, bookingId]
+      ["available", bookingId]
     );
   }
 };
