@@ -12,7 +12,7 @@ const autoReturnBookings = async () => {
   }
 
   const rent_date_ended_bookings = (bookings_info.rows).filter(
-    (booking) => new Date(booking.rent_end_date).getTime() > Date.now()
+    (booking) => new Date(booking.rent_end_date).getTime() < Date.now()
   );
 
   console.log(rent_date_ended_bookings)
