@@ -51,7 +51,8 @@ const getAllBookings = async (req: Request, res: Response) => {
 const updateBookings = async(req: Request, res: Response) =>{
   try {
     
-  } catch (error) {
+  } catch (err: any) {
+    m
     
   }  
 }
