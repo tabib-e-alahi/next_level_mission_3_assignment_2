@@ -58,7 +58,7 @@ const updateUser = async (req: Request, res: Response) => {
 const deleteUser = async(req: Request, res: Response) =>{
   try{
     
-    const result  = await userServices.deleteUser(req.params)
+    const result  = await userServices.deleteUser({})
 
   }catch(err: any){
     return res.status(403).json({

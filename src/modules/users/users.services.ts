@@ -52,7 +52,7 @@ const updateUser = async (payload: Record<string, unknown>) => {
 };
 
 const deleteUser = await (payload: Record<string, unknown>) =>{
-  const {use}
+  const {userId} = payload;
 }
 
 export const userServices = {
