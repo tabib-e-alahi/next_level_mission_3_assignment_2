@@ -53,7 +53,8 @@ const updateUser = async (payload: Record<string, unknown>) => {
 
 const deleteUser = async (payload: Record<string, unknown>) => {
   const {userId} = payload;
-  const 
+  // retrieving bokings witht his userId
+  const bookings
 }
 
 export const userServices = {
