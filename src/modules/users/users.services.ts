@@ -68,6 +68,8 @@ const deleteUser = async (payload: Record<string, unknown>) => {
         "This user has active bookings. You can delete this user."
       );
     }
+
+    
   }
 };
 
