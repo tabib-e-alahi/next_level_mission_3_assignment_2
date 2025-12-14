@@ -78,6 +78,76 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
   }
 };
 
+// const updateBookings = async (payload: Record<string, unknown>) => {
+//   const { bookingId, userRole, loggedInUserId } = payload;
+
+//   const booking_info = await pool.query(`SELECT * FROM Bookings WHERE id=$1`, [
+//     bookingId,
+//   ]);
+
+//   if (userRole === "admin") {
+//     const result = await pool.query(
+//       `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
+//       ["returned", bookingId]
+//     );
+
+//     const vehicleId = result.rows[0].vehicle_id;
+//     const vehicle_result = await pool.query(
+//       `UPDATE Vehicles SET availability_status=$1 WHERE id=$2 RETURNING *`,
+//       ["available", vehicleId]
+//     );
+
+//     const final_result = {
+//       id: bookingId,
+//       customer_id: result.rows[0].customer_id,
+//       vehicle_id: vehicleId,
+//       rent_start_date: result.rows[0].rent_start_date,
+//       rent_end_date: result.rows[0].rent_end_date,
+//       total_price: result.rows[0].total_price,
+//       status: result.rows[0].status,
+//       vehicle: {
+//         availability_status: vehicle_result.rows[0].availability_status,
+//       },
+//     };
+
+//     return final_result;
+//   }
+
+//   if (!booking_info.rows.length) {
+//     throw new Error("Booking not found");
+//   }
+
+//   if (
+//     userRole !== "admin" &&
+//     !(booking_info.rows[0].customer_id !== loggedInUserId)
+//   ) {
+//     throw new Error("You are not authorized to update this.");
+//   }
+
+//   const rentStartDate = new Date(
+//     booking_info.rows[0].rent_start_date
+//   ).getTime();
+
+//   if (rentStartDate <= Date.now()) {
+//     throw new Error(
+//       `You can not cancel booking after the rent start date which was ${booking_info.rows[0].rent_start_date}`
+//     );
+//   }
+
+//   const result = await pool.query(
+//     `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
+//     ["cancelled", bookingId]
+//   );
+
+//   const vehicleId = result.rows[0].vehicle_id;
+//   const vehicle_result = await pool.query(
+//     `UPDATE Vehicles SET availability_status=$1 WHERE id=$2 RETURNING *`,
+//     ["available", vehicleId]
+//   );
+
+//   return result;
+// };
+
 const updateBookings = async (payload: Record<string, unknown>) => {
   const { bookingId, userRole, loggedInUserId } = payload;
 
@@ -85,67 +155,54 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     bookingId,
   ]);
 
-  if (userRole === "admin") {
-    const result = await pool.query(
-      `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
-      ["returned", bookingId]
-    );
-
-    const vehicleId = result.rows[0].vehicle_id;
-    const vehicle_result = await pool.query(
-      `UPDATE Vehicles SET availability_status=$1 WHERE id=$2 RETURNING *`,
-      ["available", vehicleId]
-    );
-
-    const final_result = {
-      id: bookingId,
-      customer_id: result.rows[0].customer_id,
-      vehicle_id: vehicleId,
-      rent_start_date: result.rows[0].rent_start_date,
-      rent_end_date: result.rows[0].rent_end_date,
-      total_price: result.rows[0].total_price,
-      status: result.rows[0].status,
-      vehicle: {
-        availability_status: vehicle_result.rows[0].availability_status,
-      },
-    };
-
-    return final_result;
-  }
-
   if (!booking_info.rows.length) {
     throw new Error("Booking not found");
   }
 
-  if (
-    userRole !== "admin" &&
-    !(booking_info.rows[0].customer_id !== loggedInUserId)
-  ) {
-    throw new Error("You are not authorized to update this.");
+  const booking = booking_info.rows[0];
+
+  // ---- AUTHORIZATION ----
+  if (userRole !== "admin" && booking.customer_id !== loggedInUserId) {
+    throw new Error("You are not authorized to update this booking");
   }
 
-  const rentStartDate = new Date(
-    booking_info.rows[0].rent_start_date
-  ).getTime();
-
-  if (rentStartDate <= Date.now()) {
-    throw new Error(
-      `You can not cancel booking after the rent start date which was ${booking_info.rows[0].rent_start_date}`
-    );
+  // ---- CUSTOMER RULE ----
+  if (userRole !== "admin") {
+    const rentStart = new Date(booking.rent_start_date).getTime();
+    if (rentStart <= Date.now()) {
+      throw new Error(
+        `You can not cancel booking after the rent start date which was ${booking.rent_start_date}`
+      );
+    }
   }
 
-  const result = await pool.query(
+  // ---- STATUS DECISION ----
+  const newStatus = userRole === "admin" ? "returned" : "cancelled";
+
+  const booking_result = await pool.query(
     `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
-    ["cancelled", bookingId]
+    [newStatus, bookingId]
   );
 
-  const vehicleId = result.rows[0].vehicle_id;
+  const vehicleId = booking_result.rows[0].vehicle_id;
+
   const vehicle_result = await pool.query(
     `UPDATE Vehicles SET availability_status=$1 WHERE id=$2 RETURNING *`,
     ["available", vehicleId]
   );
 
-  return result;
+  return {
+    id: booking_result.rows[0].id,
+    customer_id: booking_result.rows[0].customer_id,
+    vehicle_id: vehicleId,
+    rent_start_date: booking_result.rows[0].rent_start_date,
+    rent_end_date: booking_result.rows[0].rent_end_date,
+    total_price: booking_result.rows[0].total_price,
+    status: booking_result.rows[0].status,
+    vehicle: {
+      availability_status: vehicle_result.rows[0].availability_status,
+    },
+  };
 };
 
 export const bookingServices = {
