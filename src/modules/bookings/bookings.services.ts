@@ -101,26 +101,11 @@ const updateBookings = async (payload: Record<string, unknown>) => {
       total_price: result.rows[0].total_price,
       status: result.rows[0].status,
       vehicle: {
-        availability_status: "available",
+        availability_status: vehicle_result.rows[0].availability_status,
       },
     };
 
-    return {
-      success: true,
-      message: "Booking marked as returned. Vehicle is now available",
-      data: {
-        id: 1,
-        customer_id: 1,
-        vehicle_id: 2,
-        rent_start_date: "2024-01-15",
-        rent_end_date: "2024-01-20",
-        total_price: 250,
-        status: "returned",
-        vehicle: {
-          availability_status: "available",
-        },
-      },
-    };
+    return final_result;
   }
 };
 
