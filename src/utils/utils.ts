@@ -11,7 +11,7 @@ const autoReturnBookings = async () => {
 
   const rent_date_ended_bookings = bookings_info.rows.map(booking => (booking.rent_end_date).getTime > Date.now())
 
-  for (const booking of expired.rows) {
+  for (const booking in rent_date_ended_bookings) {
     await pool.query(`UPDATE Bookings SET status='returned' WHERE id=$1`, [
       booking.id,
     ]);
