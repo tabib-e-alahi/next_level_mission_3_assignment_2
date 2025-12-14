@@ -128,7 +128,7 @@ const updateBookings = async (payload: Record<string, unknown>) => {
 
   if (rentStartDate <= Date.now()) {
     throw new Error(
-      "You can not cancel booking after the "
+      `You can not cancel booking after the rent start date which was ${booking_info.rows[0].rent_start_date}`
     );
   }
 
