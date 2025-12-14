@@ -57,7 +57,10 @@ const updateBookings = async (req: Request, res: Response) => {
       loggedInUserId,
     });
     if(userRole === 'admin'){
-      res.status(200)
+      res.status(200).json({
+        success: true,
+        message: 
+      })
     }
   } catch (err: any) {
     res.status(403).json({
