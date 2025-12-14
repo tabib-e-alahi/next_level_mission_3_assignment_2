@@ -91,7 +91,7 @@ const updateBookings = async (payload: Record<string, unknown>) => {
 
   const booking = booking_info.rows[0];
 
-  if
+  if(booking.status === '')
 
   if (userRole !== "admin" && booking.customer_id !== loggedInUserId) {
     throw new Error("You are not authorized to update this booking");
