@@ -5,7 +5,7 @@ const autoReturnBookings = async () => {
     SELECT id, vehicle_id, rent_end_date FROM Bookings WHERE status = 'active'
   `);
 
-  consol
+  console.log(bookings_info.rows)
 
   if (bookings_info.rows.length === 0) {
     return;
