@@ -60,7 +60,8 @@ const deleteUser = async (req: Request, res: Response) => {
     const result = await userServices.deleteUser(req.params);
 
     if (result.rowCount === 0)
-      throw new Error("Vehicle Data not found");
+      throw new Error("Bokings Data not found");
+    
     return res.status(200).json({
       success: true,
       message: "Vehicle deleted successfully",
