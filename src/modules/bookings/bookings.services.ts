@@ -86,11 +86,10 @@ const updateBookings = async (payload: Record<string, unknown>) => {
       `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
       [booking_status, bookingId]
     );
-    if (result.rows[0].status === "returned") {
-      const vehicle_status = 'available';
-      const vehicleId = result.rows[0].vehicle_id;
-      
-    }
+
+    const vehicle_status = "available";
+    const vehicleId = result.rows[0].vehicle_id;
+     const vehcile_result = 
   }
 };
 
