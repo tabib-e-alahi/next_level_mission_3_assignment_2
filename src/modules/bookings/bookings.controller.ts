@@ -28,8 +28,9 @@ const createBookings = async (req: Request, res: Response) => {
 };
 
 const getAllBookings = async (req: Request, res: Response) => {
+  autoReturnBookings();
   try {
-    autoReturnBookings();
+    
     const result = await bookingServices.getAllBookings(req.user as JwtPayload);
 
     if (result?.rows.length === 0) {
