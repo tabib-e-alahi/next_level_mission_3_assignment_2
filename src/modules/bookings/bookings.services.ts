@@ -3,9 +3,15 @@ import { pool } from "../../config/db";
 const createBookings = async (payload: Record<string, unknown>) => {
   const { customer_id, vehicle_id, rent_start_date, rent_end_date } = payload;
 
-  const vehicle_info = await pool.query(`SELECT * FROM Vehicles WHERE id=$1`, [vehicle_id]);
+  const vehicle_info = await pool.query(`SELECT * FROM Vehicles WHERE id=$1`, [
+    vehicle_id,
+  ]);
 
-  if(vehicle_info.rows[0].availability_status !== 'available')
+  if (vehicle_info.rows[0].availability_status !== "available") {
+    throw new Error(
+      "This vehicle is already booked. Please try to book another vehicle"
+    );
+  }
 
   const start_date = new Date(rent_start_date as string);
   const end_date = new Date(rent_end_date as string);
