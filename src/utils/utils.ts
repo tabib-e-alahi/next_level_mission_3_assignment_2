@@ -2,7 +2,7 @@ import { pool } from "../config/db";
 
 const autoReturnBookings = async () => {
   
-  const expired = await pool.query(`
+  const ret_ended = await pool.query(`
     SELECT id, vehicle_id
     FROM Bookings
     WHERE status = 'active'
@@ -23,3 +23,5 @@ const autoReturnBookings = async () => {
     );
   }
 };
+
+export default autoReturnBookings;
