@@ -59,7 +59,9 @@ const deleteUser = async (payload: Record<string, unknown>) => {
 
   console.log(booking_status);
 
-  if(booking_status.)
+  if(booking_status.includes('active')){
+    
+  }
 
 }
 
