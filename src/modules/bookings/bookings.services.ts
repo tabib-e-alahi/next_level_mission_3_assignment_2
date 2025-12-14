@@ -165,18 +165,16 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     throw new Error("You are not authorized to update this booking");
   }
 
-  // ---- CUSTOMER RULE ----
   if (userRole !== "admin") {
-    const rentStart = new Date(booking.rent_start_date).getTime();
-    if (rentStart <= Date.now()) {
+    const rentStartDate = new Date(booking.rent_start_date).getTime();
+    if (rentStartDate <= Date.now()) {
       throw new Error(
         `You can not cancel booking after the rent start date which was ${booking.rent_start_date}`
       );
     }
   }
 
-  // ---- STATUS DECISION ----
-  const newStatus = userRole === "admin" ? "returned" : "cancelled";
+  const newStatus = (userRole === "admin") ? "returned" : "cancelled";
 
   const booking_result = await pool.query(
     `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
