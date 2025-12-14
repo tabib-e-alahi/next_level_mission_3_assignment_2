@@ -80,6 +80,11 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
 
 const updateBookings = async (payload: Record<string, unknown>) => {
   const { bookingId, userRole, loggedInUserId } = payload;
+
+  const booking_info = await pool.query(`SELECT * FROM Bookings WHERE id=$1`, [
+    bookingId,
+  ]);
+
   if (userRole === "admin") {
     const result = await pool.query(
       `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
@@ -107,9 +112,6 @@ const updateBookings = async (payload: Record<string, unknown>) => {
 
     return final_result;
   }
-  const booking_info = await pool.query(`SELECT * FROM Bookings WHERE id=$1`, [
-    bookingId,
-  ]);
 
   if (!booking_info.rows.length) {
     throw new Error("Booking not found");
