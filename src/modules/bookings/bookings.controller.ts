@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { bookingServices } from "./bookings.services";
 import { vehicleServices } from "../vehicles/vehicles.services";
 import { JwtPayload } from "jsonwebtoken";
+import autoReturnBookings from "../../utils/utils";
 
 const createBookings = async (req: Request, res: Response) => {
   try {
@@ -28,6 +29,7 @@ const createBookings = async (req: Request, res: Response) => {
 
 const getAllBookings = async (req: Request, res: Response) => {
   try {
+    autoReturnBookings();
     const result = await bookingServices.getAllBookings(req.user as JwtPayload);
 
     if (result?.rows.length === 0) {
