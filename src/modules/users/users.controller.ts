@@ -59,7 +59,9 @@ const deleteUser = async(req: Request, res: Response) =>{
   try{
     const {userId} = req.params;
 
-  }carc
+  }catch(err: any){
+    return res.status(00)
+  }
 }
 
 export const userController = {
