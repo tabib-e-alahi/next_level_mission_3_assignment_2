@@ -55,7 +55,12 @@ const updateUser = async (req: Request, res: Response) => {
   }
 };
 
+const deleteUser = async(req: Request, res: Response) =>{
+
+}
+
 export const userController = {
   getAllUsers,
   updateUser,
+  deleteUser
 };
