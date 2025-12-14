@@ -82,7 +82,7 @@ const updateBookings = async (payload: Record<string, unknown>) => {
   const { bookingId, userRole, loggedInUserId } = payload;
   if(userRole === 'admin'){
 
-  }else if(userRole === 'customer')
+  }
 };
 
 export const bookingServices = {
