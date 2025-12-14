@@ -89,8 +89,12 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     const vehicleId = result.rows[0].vehicle_id;
     const vehicle_result = await pool.query(
       `UPDATE Vehicles SET availability_status=$1 WHERE id=$2 RETURNING *`,
-      ["available", bookingId]
+      ["available", vehicleId]
     );
+
+    return {
+      
+    }
   }
 };
 
