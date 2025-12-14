@@ -33,7 +33,10 @@ const createBookings = async (payload: Record<string, unknown>) => {
     [vehicle_id]
   );
 
-  if (book_vehicle_status.rows.length !== 0 && book_vehicle_status.rows[0].status === "active") {
+  if (
+    book_vehicle_status.rows.length !== 0 &&
+    book_vehicle_status.rows[0].status === "active"
+  ) {
     throw new Error("This vehicle is already booked.");
   }
 
@@ -75,13 +78,15 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
   }
 };
 
-const updateBookings = async (payload: Record<string, unknown>) =>{
-  const {bookingId} = payload;
-  
-}
+const updateBookings = async (payload: Record<string, unknown>) => {
+  const { bookingId, userRole, loggedInUserId } = payload;
+  if(userRole === 'admin'){
+
+  }else if(userRole === 'customer')
+};
 
 export const bookingServices = {
   createBookings,
   getAllBookings,
-  updateBookings
+  updateBookings,
 };

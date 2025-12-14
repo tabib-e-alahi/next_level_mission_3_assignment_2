@@ -50,8 +50,12 @@ const getAllBookings = async (req: Request, res: Response) => {
 
 const updateBookings = async (req: Request, res: Response) => {
   try {
-    const {role: userRole, id: loggedInUserId} = req.user as JwtPayload;
-    const result = await bookingServices.updateBookings({bookingId:req.params.bookingId, });
+    const { role: userRole, id: loggedInUserId } = req.user as JwtPayload;
+    const result = await bookingServices.updateBookings({
+      bookingId: req.params.bookingId,
+      userRole,
+      loggedInUserId,
+    });
   } catch (err: any) {
     res.status(403).json({
       success: false,
