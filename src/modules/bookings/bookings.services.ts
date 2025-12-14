@@ -124,7 +124,9 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     throw new Error("You are not authorized to update this.");
   }
 
-  const rentStartDate = new Date(booking_info.rows[0].rent_start_date).getTime();
+  const rentStartDate = new Date(
+    booking_info.rows[0].rent_start_date
+  ).getTime();
 
   if (rentStartDate <= Date.now()) {
     throw new Error(
@@ -142,6 +144,19 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     `UPDATE Vehicles SET availability_status=$1 WHERE id=$2 RETURNING *`,
     ["available", vehicleId]
   );
+
+  const final_result = {
+      id: bookingId,
+      customer_id: result.rows[0].customer_id,
+      vehicle_id: vehicleId,
+      rent_start_date: result.rows[0].rent_start_date,
+      rent_end_date: result.rows[0].rent_end_date,
+      total_price: result.rows[0].total_price,
+      status: result.rows[0].status,
+      vehicle: {
+        availability_status: vehicle_result.rows[0].availability_status,
+      },
+    };
 };
 
 export const bookingServices = {
