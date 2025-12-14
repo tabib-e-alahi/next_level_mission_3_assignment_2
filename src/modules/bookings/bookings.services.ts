@@ -124,7 +124,7 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     throw new Error("You are not authorized to update this.");
   }
 
-  const rentEndtime = new Date(booking_info.rows[0].rent_end_date).getTime();
+  const rent_start_date = new Date(booking_info.rows[0].rent_end_date).getTime();
 
   if (rentEndtime < Date.now()) {
     throw new Error(
