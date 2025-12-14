@@ -120,9 +120,10 @@ const updateBookings = async (payload: Record<string, unknown>) => {
   }
 
   if(booking_info.rows[0].rent_end_date.getTime() < (new Date()).getTime()){
-    throw new Error("The rent duration already ended and The vehicle was returned");
-    
+    throw new Error("The rent duration already ended and the vehicle was returned. No need to cancel anything");
   }
+
+  
 
 
 };
