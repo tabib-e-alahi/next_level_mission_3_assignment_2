@@ -87,7 +87,9 @@ const updateBookings = async (payload: Record<string, unknown>) => {
       [booking_status, bookingId]
     );
     if (result.rows[0].status === "returned") {
-      const vehicle_
+      const vehicle_status = 'available';
+      const vehicleId = result.rows[0].vehicle_id;
+      
     }
   }
 };
