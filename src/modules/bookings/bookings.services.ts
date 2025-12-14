@@ -128,7 +128,7 @@ const updateBookings = async (payload: Record<string, unknown>) => {
 
   if (rentStartDate <= Date.now()) {
     throw new Error(
-      "The vehicle is already on rent"
+      "You can not cancel booking after the "
     );
   }
 
