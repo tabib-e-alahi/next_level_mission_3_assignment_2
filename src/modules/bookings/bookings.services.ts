@@ -81,7 +81,7 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
 const updateBookings = async (payload: Record<string, unknown>) => {
   const { bookingId, userRole, loggedInUserId } = payload;
   if(userRole === 'admin'){
-    const result = await pool.query(`UPDATE Bookings `)
+    const result = await pool.query(`UPDATE Bookings SET status=$1`)
   }
 };
 
