@@ -50,7 +50,7 @@ const getAllBookings = async (req: Request, res: Response) => {
 
 const updateBookings = async (req: Request, res: Response) => {
   try {
-    const result = 
+    const result = await bookingServices.updateBookings();
   } catch (err: any) {
     res.status(403).json({
       success: false,
@@ -63,4 +63,5 @@ const updateBookings = async (req: Request, res: Response) => {
 export const bookingController = {
   createBookings,
   getAllBookings,
+  updateBookings,
 };
