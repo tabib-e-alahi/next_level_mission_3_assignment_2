@@ -75,6 +75,8 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
   }
 };
 
+const updfa
+
 export const bookingServices = {
   createBookings,
   getAllBookings,
