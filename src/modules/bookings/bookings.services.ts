@@ -3,7 +3,9 @@ import { pool } from "../../config/db";
 const createBookings = async (payload: Record<string, unknown>) => {
   const { customer_id, vehicle_id, rent_start_date, rent_end_date } = payload;
 
-  const vehicle_info = await pool.query(`SELECT * FROM Vehicles `)
+  const vehicle_info = await pool.query(`SELECT * FROM Vehicles WHERE id=$1`, [vehicle_id]);
+
+  if(vehicle_info.rows[0].availability_status !== 'available')
 
   const start_date = new Date(rent_start_date as string);
   const end_date = new Date(rent_end_date as string);
