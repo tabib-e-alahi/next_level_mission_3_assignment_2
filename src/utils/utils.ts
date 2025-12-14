@@ -5,15 +5,17 @@ const autoReturnBookings = async () => {
     SELECT id, vehicle_id, rent_end_date FROM Bookings WHERE status = 'active'
   `);
 
-  console.log(bookings_info.rows)
+  
 
   if (bookings_info.rows.length === 0) {
     return;
   }
 
-  const rent_date_ended_bookings = bookings_info.rows.filter(
+  const rent_date_ended_bookings = (bookings_info.rows).filter(
     (booking) => new Date(booking.rent_end_date).getTime() > Date.now()
   );
+
+  console.log(rent_date_ended_bookings)
 
   for (const booking of rent_date_ended_bookings) {
     await pool.query(`UPDATE Bookings SET status='returned' WHERE id=$1`, [
