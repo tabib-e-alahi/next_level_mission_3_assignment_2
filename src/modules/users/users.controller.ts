@@ -57,8 +57,9 @@ const updateUser = async (req: Request, res: Response) => {
 
 const deleteUser = async(req: Request, res: Response) =>{
   try{
-    const {}
-  }
+    const {userId} = req.params;
+
+  }carc
 }
 
 export const userController = {
