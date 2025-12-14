@@ -60,7 +60,11 @@ const deleteUser = async(req: Request, res: Response) =>{
     const {userId} = req.params;
 
   }catch(err: any){
-    return res.status(00)
+    return res.status(403).json({
+      success: false,
+      message: "user deletion failed.",
+      error: err.message
+    })
   }
 }
 
