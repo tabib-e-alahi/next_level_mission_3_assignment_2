@@ -63,29 +63,14 @@ const deleteUser = async (payload: Record<string, unknown>) => {
     (res) => res.status === "active"
   );
 
-  if (hasActiveBooking) {
+  if (active_booking) {
     throw new Error(
       "This user has active bookings. You can not delete this user."
     );
   }
-
-  return await pool.query(`DELETE FROM Users WHERE id=$1`, [userId]);
-
-  if (bookings_result.rows.length === 0) {
-    const result = await pool.query(`DELETE FROM Users WHERE id=$1`, [userId]);
-    return result;
-  } else if (bookings_result.rows.length > 0) {
-    const booking_status = bookings_result.rows.map((res) => res.status);
-    //if 'active' bookings exist
-    if (booking_status.includes("active")) {
-      throw new Error(
-        "This user has active bookings. You can not delete this user."
-      );
-    }
-    const result = await pool.query(`DELETE FROM Users WHERE id=$1`, [userId]);
-
-    return result;
-  }
+  
+  const result = await pool.query(`DELETE FROM Users WHERE id=$1`, [userId]);
+  return result;
 };
 
 export const userServices = {
