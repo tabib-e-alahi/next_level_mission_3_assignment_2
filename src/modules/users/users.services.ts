@@ -59,7 +59,10 @@ const deleteUser = async (payload: Record<string, unknown>) => {
     [userId]
   );
 
-  if (bookings_result.rows.length > 0) {
+  if (bookings_result.rows.length === 0) {
+    const result = await pool.query(`DELETE FROM Users WHERE id=$1`, [userId]);
+    return result;
+  } else if (bookings_result.rows.length > 0) {
     const booking_status = bookings_result.rows.map((res) => res.status);
     //if 'active' bookings exist
     if (booking_status.includes("active")) {
