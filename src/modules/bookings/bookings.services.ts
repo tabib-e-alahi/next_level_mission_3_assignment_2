@@ -200,6 +200,8 @@ const updateBookings = async (payload: Record<string, unknown>) => {
       availability_status: vehicle_result.rows[0].availability_status,
     },
   };
+
+  return [booking_result.rows[0],]
 };
 
 export const bookingServices = {
