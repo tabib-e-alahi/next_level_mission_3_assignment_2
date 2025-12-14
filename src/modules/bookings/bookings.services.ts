@@ -174,7 +174,7 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     }
   }
 
-  const newStatus = (userRole === "admin") ? "returned" : "cancelled";
+  const newStatus = userRole === "admin" ? "returned" : "cancelled";
 
   const booking_result = await pool.query(
     `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
@@ -201,7 +201,7 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     },
   };
 
-  return [booking_result.rows[0],]
+  return [booking_result.rows[0], vehicle_result.rows[0]];
 };
 
 export const bookingServices = {
