@@ -3,3 +3,5 @@ dist
 .env*
 vercel.json
 .DS_Store
+.vercel
+.env*.local
