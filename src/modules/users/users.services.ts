@@ -54,7 +54,6 @@ const updateUser = async (payload: Record<string, unknown>) => {
 const deleteUser = async (payload: Record<string, unknown>) => {
   const { userId } = payload;
 
-  //* retrieving bokings witht his userId
   const bookings_result = await pool.query(
     `SELECT status FROM Bookings WHERE customer_id=$1`,
     [userId]
@@ -65,11 +64,13 @@ const deleteUser = async (payload: Record<string, unknown>) => {
     //if 'active' bookings exist
     if (booking_status.includes("active")) {
       throw new Error(
-        "This user has active bookings. You can delete this user."
+        "This user has active bookings. You can not delete this user."
       );
     }
 
-    
+    const result = await pool.query(`DELETE FROM Vehicles WHERE id=$1`, [
+    userId,
+  ]);
   }
 };
 
