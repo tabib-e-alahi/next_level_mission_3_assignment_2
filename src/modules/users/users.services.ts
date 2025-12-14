@@ -53,11 +53,14 @@ const updateUser = async (payload: Record<string, unknown>) => {
 
 const deleteUser = async (payload: Record<string, unknown>) => {
   const { userId } = payload;
+
+  //* retrieving bokings witht his userId
   const bookings_result = await pool.query(
     `SELECT status FROM Bookings WHERE customer_id=$1`,
     [userId]
   );
-  if (bookings_result.rows.length !== 0) {
+
+  if (bookings_result.rows.length > 0) {
     const booking_status = bookings_result.rows.map((res) => res.status);
     //if 'active' bookings exist
     if (booking_status.includes("active")) {
