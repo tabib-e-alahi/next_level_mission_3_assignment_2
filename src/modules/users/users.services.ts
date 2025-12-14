@@ -56,8 +56,10 @@ const deleteUser = async (payload: Record<string, unknown>) => {
   // retrieving bokings witht his userId
   const bookings_result = await pool.query(`SELECT status FROM Bookings WHERE customer_id=$1`,[userId]);
   const booking_status = bookings_result.rows.map(res => res.status);
-  
-  
+
+  console.log(booking_status);
+
+  if(booking_status.)
 
 }
 
