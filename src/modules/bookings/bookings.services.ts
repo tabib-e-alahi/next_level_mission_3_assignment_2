@@ -75,9 +75,12 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
   }
 };
 
-
+const updateBookings = async (payload: Record<string, unknown>) =>{
+  
+}
 
 export const bookingServices = {
   createBookings,
   getAllBookings,
+  updateBookings
 };
