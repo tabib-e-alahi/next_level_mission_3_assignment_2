@@ -50,7 +50,7 @@ const getAllBookings = async (req: Request, res: Response) => {
 
 const updateBookings = async (req: Request, res: Response) => {
   try {
-    const result = await bookingServices.updateBookings(bookingId: req.params.bookingId});
+    const result = await bookingServices.updateBookings(req.params);
   } catch (err: any) {
     res.status(403).json({
       success: false,

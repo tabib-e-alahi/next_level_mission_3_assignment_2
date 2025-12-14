@@ -76,6 +76,7 @@ const getAllBookings = async (payload: Record<string, unknown>) => {
 };
 
 const updateBookings = async (payload: Record<string, unknown>) =>{
+  const {bookingId} = payload;
   
 }
 
