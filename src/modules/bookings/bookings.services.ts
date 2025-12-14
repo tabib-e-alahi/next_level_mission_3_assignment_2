@@ -96,8 +96,8 @@ const updateBookings = async (payload: Record<string, unknown>) => {
       id: bookingId,
       customer_id: result.rows[0].customer_id,
       vehicle_id: vehicleId,
-      rent_start_date: "2024-01-15",
-      rent_end_date: "2024-01-20",
+      rent_start_date: result.rows[0].rent_start_date,
+      rent_end_date: rent_start_date,
       total_price: 250,
       status: "returned",
       vehicle: {
