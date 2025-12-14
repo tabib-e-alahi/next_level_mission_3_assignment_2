@@ -109,7 +109,7 @@ const updateBookings = async (payload: Record<string, unknown>) => {
   }
   const customer_info = await pool.query(`SELECT customer_id FROM Bookings WHERE id=$1`, [bookingId]);
 
-  if(userRole !== 'admin' && !(customer_info.rows[0]))
+  if(userRole !== 'admin' && !(customer_info.rows[0].customer_id !== ))
 };
 
 export const bookingServices = {
