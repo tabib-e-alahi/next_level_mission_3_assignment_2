@@ -132,7 +132,16 @@ const updateBookings = async (payload: Record<string, unknown>) => {
     );
   }
 
-  
+  const result = await pool.query(
+    `UPDATE Bookings SET status=$1 WHERE id=$2 RETURNING *`,
+    ["cancelled", bookingId]
+  );
+
+  const vehicleId = result.rows[0].vehicle_id;
+  const vehicle_result = await pool.query(
+    `UPDATE Vehicles SET availability_status=$1 WHERE id=$2 RETURNING *`,
+    ["available", vehicleId]
+  );
 };
 
 export const bookingServices = {
