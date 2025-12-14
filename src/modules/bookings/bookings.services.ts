@@ -83,7 +83,9 @@ const updateBookings = async (payload: Record<string, unknown>) => {
   if(userRole === 'admin'){
     const booking_status = 'returned'
     const result = await pool.query(`UPDATE Bookings SET status=$1 RETURNING *`,[booking_status]);
-    if(result.rows[0])
+    if(result.rows[0].status === 'returned'){
+      
+    }
   }
 };
 
