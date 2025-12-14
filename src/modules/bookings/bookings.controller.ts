@@ -50,6 +50,7 @@ const getAllBookings = async (req: Request, res: Response) => {
 
 const updateBookings = async (req: Request, res: Response) => {
   try {
+    const result = 
   } catch (err: any) {
     res.status(403).json({
       success: false,
