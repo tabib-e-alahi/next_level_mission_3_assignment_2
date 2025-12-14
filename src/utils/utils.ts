@@ -2,14 +2,14 @@ import { pool } from "../config/db";
 
 const autoReturnBookings = async () => {
   
-  const ret_ended = await pool.query(`
+  const bookings_info = await pool.query(`
     SELECT id, vehicle_id
     FROM Bookings
     WHERE status = 'active'
-    AND rent_end_date < NOW()
   `);
 
-  if (!expired.rows.length) return;
+  if (bookings_info.rows.length === 0)
+  []
 
   for (const booking of expired.rows) {
     await pool.query(
