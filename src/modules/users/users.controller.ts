@@ -55,22 +55,27 @@ const updateUser = async (req: Request, res: Response) => {
   }
 };
 
-const deleteUser = async(req: Request, res: Response) =>{
-  try{
-    
-    const result  = await userServices.deleteUser(req.params)
+const deleteUser = async (req: Request, res: Response) => {
+  try {
+    const result = await userServices.deleteUser(req.params);
 
-  }catch(err: any){
+    if (result.rowCount === 0)
+      throw new Error("Vehicle Data not found");
+    return res.status(200).json({
+      success: true,
+      message: "Vehicle deleted successfully",
+    });
+  } catch (err: any) {
     return res.status(403).json({
       success: false,
       message: "user deletion failed.",
-      error: err.message
-    })
+      error: err.message,
+    });
   }
-}
+};
 
 export const userController = {
   getAllUsers,
   updateUser,
-  deleteUser
+  deleteUser,
 };
