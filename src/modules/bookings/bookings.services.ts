@@ -91,8 +91,8 @@ const updateBookings = async (payload: Record<string, unknown>) => {
 
   const booking = booking_info.rows[0];
 
-  if(booking.status === 'returned' || booking.status === 'cancelled'){
-    thr
+  if (booking.status === "returned" || booking.status === "cancelled") {
+    throw new Error(`This booking is already marked as ${booking.status}`);
   }
 
   if (userRole !== "admin" && booking.customer_id !== loggedInUserId) {
