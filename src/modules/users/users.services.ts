@@ -51,9 +51,12 @@ const updateUser = async (payload: Record<string, unknown>) => {
   return final_result;
 };
 
-const deleteUser
+const deleteUser = await (payload: Record<string, unknown>) =>{
+  const {use}
+}
 
 export const userServices = {
   getAllUsers,
   updateUser,
+  deleteUser
 };
