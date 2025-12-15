@@ -1,6 +1,6 @@
 # **Vehicle Rental System**
 
-### **Live URL:** `https://nextlevelassignment2.vercel.app/`
+### **Live URL:** https://nextlevelassignment2.vercel.app/
 
 ## Project Overview
 
