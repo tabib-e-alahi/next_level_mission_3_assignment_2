@@ -11,7 +11,7 @@ This system is designed using a **modular, feature-based architecture** with str
 
 ## Key Features
 
-> ###  Authentication & Authorization
+###  Authentication & Authorization
 
 *   Secure user registration and login
 *   Password hashing using **bcrypt**
